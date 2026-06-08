@@ -327,8 +327,20 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  word-break: keep-all;
+  word-break: break-all;        /* 任意位置で改行可能に */
   overflow-wrap: anywhere;
+  hyphens: auto;
+}
+/* 長い国名（11文字以上）はフォントを縮めて表示 */
+.team-btn .team-name.long-name {
+  font-size: 0.58rem;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+.team-btn .team-name.very-long-name {
+  font-size: 0.52rem;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
 }
 .team-btn .team-odds {
   font-size: 0.66rem;

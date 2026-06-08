@@ -219,11 +219,16 @@ function renderTeamGrid() {
       btn.className = 'team-btn' + (isSelected ? ' selected' : '') + (isFull ? ' disabled' : '');
       const orderBadge = (currentBetType === 'trifecta' && isSelected)
         ? `<span class="order-badge">${pickIdx + 1}</span>` : '';
+      // 国名の長さに応じてフォント縮小クラスを付与
+      const len = team.name.length;
+      const nameClass = len >= 11 ? 'team-name very-long-name'
+                       : len >= 8 ? 'team-name long-name'
+                       : 'team-name';
       btn.innerHTML = `
         ${orderBadge}
         ${flagImg(team, 'md')}
         <div class="team-btn-text">
-          <span class="team-name">${team.name}</span>
+          <span class="${nameClass}">${team.name}</span>
           <span class="team-odds">${odds?.toFixed(1)}倍</span>
         </div>
       `;

@@ -648,7 +648,7 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   top: 100%;
   left: 0;
   right: 0;
-  height: 120px;            /* ボタン下まで座布団延長 → ロゴと被ってもロゴが見えない */
+  height: 30px;             /* ボタン直下のみ座布団 → デフォルト時にロゴに被らない */
   background: #151a3e;
   z-index: -1;
   pointer-events: none;

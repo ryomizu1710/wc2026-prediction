@@ -513,7 +513,7 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 .empty-state { text-align: center; padding: 2rem; color: #556; }
 hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
 
-/* ─── FIFA Logo (コンパクト・投票ボタン被り防止) ─── */
+/* ─── FIFA Logo (Mac はコンパクト、Windows は大きめ) ─── */
 .fifa-logo-wrap {
   margin-top: auto;
   padding-top: 0.6rem;
@@ -531,6 +531,12 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   max-height: 160px;
   object-fit: contain;
   display: block;
+}
+
+/* Windows のみロゴを大きく */
+.is-windows .fifa-logo {
+  max-width: 300px;
+  max-height: 240px;
 }
 
 @media (max-width: 900px) {

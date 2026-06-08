@@ -1,3 +1,13 @@
+// ─── OS判定（CSSで platform-specific スタイルを適用） ───
+(function detectOS() {
+  const ua = navigator.userAgent;
+  const platform = navigator.platform || '';
+  const isMac = /Mac|iPod|iPhone|iPad/.test(platform) || /Macintosh/.test(ua);
+  const isWindows = /Win/.test(platform) || /Windows/.test(ua);
+  if (isMac) document.documentElement.classList.add('is-mac');
+  if (isWindows) document.documentElement.classList.add('is-windows');
+})();
+
 // ─── State ───
 let teams = [];
 let oddsData = [];       // { code, name, group, winOdds, placeOdds }[]

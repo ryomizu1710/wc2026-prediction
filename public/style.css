@@ -40,7 +40,10 @@ html, body {
 }
 /* Macは1画面固定、Windowsはスクロール許可（ロゴが大きいため） */
 .is-mac { height: 100vh; overflow: hidden; }
-.is-windows { overflow-y: auto; }
+.is-windows {
+  overflow-y: scroll;        /* 常にスクロールバー表示 → 出現/消失による横方向ズレ防止 */
+  scrollbar-gutter: stable;  /* モダンブラウザ用：スクロールバー領域を常に確保 */
+}
 .is-mac body { height: 100vh; overflow: hidden; }
 .is-windows body { min-height: 100vh; }
 
@@ -155,12 +158,25 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 .bet-type-name { display: block; font-size: 0.82rem; font-weight: 700; color: #ffd700; }
 .bet-type-desc { display: block; font-size: 0.62rem; color: #889; margin-top: 0.05rem; }
 
-/* ─── Pick Slots (1列固定縦並び) ─── */
+/* ─── Pick Slots (1列固定縦並び・常に3スロット分の高さを確保) ─── */
 .pick-slots {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
   margin-bottom: 0.3rem;
+  /* 三連複/三連単選択時の3スロット分の高さを常に確保 → 切替時に画面が動かない */
+  min-height: 130px;
+}
+
+/* ─── Bet Amount Section (常に表示、内容は透明化) ─── */
+#betAmountSection {
+  min-height: 130px;        /* 賭けコイン入力欄分の高さを常に確保 */
+  transition: opacity 0.15s;
+}
+#betAmountSection.bet-amount-hidden {
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
 }
 .pick-slot {
   background: #0d1130; border: 2px dashed #2a2f5a; border-radius: 6px;

@@ -261,7 +261,7 @@ function setupAmountControls() {
 function updateBetAmountVisibility() {
   const config = BET_CONFIG[currentBetType];
   const ready = picks.length === config.picks;
-  document.getElementById('betAmountSection').style.display = ready ? 'block' : 'none';
+  document.getElementById('betAmountSection').classList.toggle('bet-amount-hidden', !ready);
   if (ready) {
     const input = document.getElementById('betAmount');
     if (parseInt(input.value) > balance) input.value = Math.floor(balance / 100) * 100;
@@ -328,7 +328,7 @@ function setupSubmit() {
       picks = [];
       renderPickSlots();
       renderTeamGrid();
-      document.getElementById('betAmountSection').style.display = 'none';
+      document.getElementById('betAmountSection').classList.add('bet-amount-hidden');
       balance = data.balance;
       document.getElementById('balanceValue').textContent = balance.toLocaleString();
       document.getElementById('headerBalance').textContent = balance.toLocaleString();

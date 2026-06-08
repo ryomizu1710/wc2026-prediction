@@ -26,26 +26,18 @@
 
 html, body {
   font-family: 'Fixture',
-    -apple-system, BlinkMacSystemFont,  /* Mac: San Francisco */
-    'Segoe UI',                          /* Windows */
-    'Hiragino Sans', 'Hiragino Kaku Gothic ProN',  /* Mac日本語 */
-    'Yu Gothic', 'Meiryo',               /* Windows日本語 */
+    -apple-system, BlinkMacSystemFont,
+    'Segoe UI',
+    'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
+    'Yu Gothic', 'Meiryo',
     sans-serif;
   background: #0a0e27;
   color: #e0e0e0;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   text-rendering: optimizeLegibility;
-  /* Safari/iOS のフォントズーム防止 */
   -webkit-text-size-adjust: 100%;
 }
-/* Macは1画面固定、Windowsはスクロール許可（ロゴが大きいため） */
-.is-mac { height: 100vh; overflow: hidden; }
-.is-windows {
-  overflow-y: scroll;        /* 常にスクロールバー表示 → 出現/消失による横方向ズレ防止 */
-  scrollbar-gutter: stable;  /* モダンブラウザ用：スクロールバー領域を常に確保 */
-}
-.is-mac body { height: 100vh; overflow: hidden; }
-.is-windows body { min-height: 100vh; }
 
 /* Safari の input/select 見た目を統一 */
 input, select, button, textarea {
@@ -158,25 +150,17 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 .bet-type-name { display: block; font-size: 0.82rem; font-weight: 700; color: #ffd700; }
 .bet-type-desc { display: block; font-size: 0.62rem; color: #889; margin-top: 0.05rem; }
 
-/* ─── Pick Slots (1列固定縦並び・常に3スロット分の高さを確保) ─── */
+/* ─── Pick Slots (1列固定縦並び・内容に応じて自然伸縮) ─── */
 .pick-slots {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
   margin-bottom: 0.3rem;
-  /* 三連複/三連単選択時の3スロット分の高さを常に確保 → 切替時に画面が動かない */
-  min-height: 130px;
 }
 
-/* ─── Bet Amount Section (常に表示、内容は透明化) ─── */
-#betAmountSection {
-  min-height: 130px;        /* 賭けコイン入力欄分の高さを常に確保 */
-  transition: opacity 0.15s;
-}
+/* ─── Bet Amount Section (表示/非表示で自然に伸縮) ─── */
 #betAmountSection.bet-amount-hidden {
-  opacity: 0;
-  pointer-events: none;
-  user-select: none;
+  display: none;
 }
 .pick-slot {
   background: #0d1130; border: 2px dashed #2a2f5a; border-radius: 6px;
@@ -207,24 +191,26 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   flex-direction: column;
 }
 
-/* ─── Vote 2-column Layout ─── */
+/* ─── Vote 2-column Layout (左右独立：左は可変・右は固定) ─── */
 .vote-layout {
-  display: grid;
-  grid-template-columns: minmax(280px, 340px) 1fr;
+  display: flex;             /* gridではなくflexで独立サイズ管理 */
   gap: 1rem;
-  align-items: stretch;
+  align-items: flex-start;   /* 列の高さを揃えない（左右独立） */
   flex: 1;
   min-height: 0;
+  height: 100%;              /* 親（vote-card）の高さを占有 */
 }
 .vote-left {
+  flex: 0 0 340px;           /* 幅固定・高さは内容に応じて自然に変化 */
   min-width: 0;
+  max-width: 340px;
   display: flex;
   flex-direction: column;
-  min-height: 0;
 }
 .vote-right {
+  flex: 1 1 auto;            /* 残り横幅を占有 */
   min-width: 0;
-  min-height: 0;
+  height: 100%;              /* 親の高さに完全フィット → 左の変化に影響されない */
   display: flex;
   flex-direction: column;
 }
@@ -553,28 +539,10 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   display: block;
 }
 
-/* Windows: ロゴを絶対配置で固定（三連複/三連単で位置がずれない） */
-.is-windows .vote-left {
-  position: relative;
-  padding-bottom: 290px;   /* ロゴ用エリアを下端に確保 */
-}
-.is-windows .fifa-logo-wrap {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin-top: 0;           /* margin-top: auto を打ち消す */
-  padding-top: 0;
-  height: 280px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  min-height: 0;
-}
+/* Windows: ロゴを大きく */
 .is-windows .fifa-logo {
-  max-width: 320px;
-  max-height: 260px;
+  max-width: 300px;
+  max-height: 240px;
 }
 
 @media (max-width: 900px) {

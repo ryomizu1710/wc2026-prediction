@@ -613,10 +613,45 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
 .vote-left > .message:not(:empty) {
   background: #151a3e;
 }
-/* ボタンは自身のグラデを持つので不透明（背景を上書きしない） */
+/* 各フォーム要素の下端に少し座布団を延長（要素間の隙間を埋める） */
+.vote-left > .form-group::after,
+.vote-left > .form-row::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: #151a3e;
+  z-index: -1;
+  pointer-events: none;
+}
+/* ボタンは黄色グラデを維持。上下に座布団を延長 */
 .vote-left > .btn {
   position: relative;
   z-index: 2;
+}
+.vote-left > .btn::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;             /* ボタン上のギャップ埋め */
+  background: #151a3e;
+  z-index: -1;
+  pointer-events: none;
+}
+.vote-left > .btn::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 120px;            /* ボタン下まで座布団延長 → ロゴと被ってもロゴが見えない */
+  background: #151a3e;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Windows: ロゴを大きく */

@@ -33,12 +33,16 @@ html, body {
     sans-serif;
   background: #0a0e27;
   color: #e0e0e0;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   text-rendering: optimizeLegibility;
   /* Safari/iOS のフォントズーム防止 */
   -webkit-text-size-adjust: 100%;
 }
+/* Macは1画面固定、Windowsはスクロール許可（ロゴが大きいため） */
+.is-mac { height: 100vh; overflow: hidden; }
+.is-windows { overflow-y: auto; }
+.is-mac body { height: 100vh; overflow: hidden; }
+.is-windows body { min-height: 100vh; }
 
 /* Safari の input/select 見た目を統一 */
 input, select, button, textarea {
@@ -533,10 +537,15 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   display: block;
 }
 
-/* Windows のみロゴを大きく */
+/* Windows のみロゴを大きく＆縮まないように */
+.is-windows .fifa-logo-wrap {
+  flex-shrink: 0;          /* 三連複/三連単でも縮まない */
+  padding-top: 1rem;
+  min-height: 280px;       /* ロゴ用の最低高さを確保 */
+}
 .is-windows .fifa-logo {
-  max-width: 300px;
-  max-height: 240px;
+  max-width: 360px;
+  max-height: 280px;
 }
 
 @media (max-width: 900px) {

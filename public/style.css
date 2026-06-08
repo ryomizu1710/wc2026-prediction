@@ -251,16 +251,16 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   margin-bottom: 0.4rem; padding-left: 0.2rem;
 }
 
-/* ─── Team Grid (利用可能領域にぴったりフィット) ─── */
+/* ─── Team Grid (利用可能領域にぴったりフィット・列優先で配置) ─── */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* 1fr のみ：利用可能高さを6等分 → 絶対にはみ出さない */
   grid-template-rows: repeat(6, 1fr);
+  grid-auto-flow: column;       /* 列優先：左A-F、右G-L の並びに */
   gap: 0.35rem;
   flex: 1;
   min-height: 0;
-  overflow: hidden;             /* 万一はみ出しても切り取り */
+  overflow: hidden;
 }
 .group-section {
   background: #0d1130;

@@ -235,25 +235,26 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   margin-bottom: 0.4rem; padding-left: 0.2rem;
 }
 
-/* ─── Team Grid (2 cols × 6 rows of groups, fill height) ─── */
+/* ─── Team Grid (利用可能領域にぴったりフィット) ─── */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* min-contentで最低限の高さ確保＋残り均等分配 */
-  grid-template-rows: repeat(6, minmax(110px, 1fr));
-  gap: 0.4rem;
+  /* 1fr のみ：利用可能高さを6等分 → 絶対にはみ出さない */
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0.35rem;
   flex: 1;
   min-height: 0;
+  overflow: hidden;             /* 万一はみ出しても切り取り */
 }
 .group-section {
   background: #0d1130;
   border-radius: 7px;
-  padding: 0.4rem 0.45rem 0.5rem;
+  padding: 0.3rem 0.4rem 0.35rem;
   border-left: 3px solid #ffd700;
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow: visible;             /* hidden → visible で切れ防止 */
+  overflow: hidden;
 }
 .group-header {
   display: flex;
@@ -280,13 +281,13 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   min-height: 0;
 }
 
-/* ─── Team Button (Windows風レイアウト：flag上・name+oddsを下に密着) ─── */
+/* ─── Team Button (利用可能領域にフィット、余白少なめ) ─── */
 .team-btn {
   position: relative;
   background: #151a3e;
   border: 1px solid #2a2f5a;
   border-radius: 5px;
-  padding: 0.4rem 0.25rem 0.35rem;
+  padding: 0.25rem 0.2rem;
   color: #ccd;
   cursor: pointer;
   transition: all 0.15s;
@@ -294,10 +295,10 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;       /* 全体を中央に */
-  gap: 0.3rem;
-  min-height: 78px;              /* Macでも余裕で収まる高さ */
-  overflow: visible;             /* hiddenを外す → 切れ防止 */
+  justify-content: center;
+  gap: 0.2rem;
+  min-height: 0;                 /* 親（grid row 1fr）にフィット */
+  overflow: hidden;
   box-sizing: border-box;
 }
 .team-btn:hover { background: #1a1f4e; border-color: #556; }
@@ -319,9 +320,9 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 }
 
 .team-btn .team-name {
-  font-size: 0.74rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.1;
   width: 100%;
   color: #fff;
   display: -webkit-box;
@@ -331,19 +332,19 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   word-break: keep-all;
   overflow-wrap: break-word;
 }
-/* 長い国名（8文字以上）はフォントを縮めて表示 */
+/* 長い国名は段階的にフォント縮小 */
 .team-btn .team-name.long-name {
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
 .team-btn .team-name.very-long-name {
-  font-size: 0.56rem;
+  font-size: 0.52rem;
   line-height: 1.0;
   letter-spacing: -0.03em;
 }
 .team-btn .team-odds {
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   color: #ffaa00;
   font-weight: 800;
   line-height: 1.2;
@@ -417,36 +418,36 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 /* ─── Pool Status (full-width, evenly spread) ─── */
 .pool-status-inline {
   width: 100%;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.8rem;
 }
 .pool-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem;
 }
 .pool-item {
-  background: #0d1130; border-radius: 6px; padding: 0.5rem 0.8rem;
+  background: #0d1130; border-radius: 6px; padding: 0.35rem 0.7rem;
   text-align: center; border: 1px solid #2a2f5a;
   display: flex; justify-content: space-between; align-items: center; gap: 0.4rem;
 }
 .pool-item.warning { border-color: #ff9966; background: rgba(255,153,102,0.1); }
 .pool-label {
-  font-size: 0.95rem;
-  font-weight: 900;                          /* 最大太字 */
-  color: #fff;                               /* 純白 */
-  text-shadow: 0 0 1px rgba(255,255,255,0.5);/* にじみで太く見せる */
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 1px rgba(255,255,255,0.5);
 }
 .pool-value {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 900;
   color: #ffd700;
   text-shadow: 0 0 1px rgba(255,215,0,0.4);
 }
 .pool-item.warning .pool-value { color: #ff9966; }
 .pool-note {
-  margin-top: 0.6rem;
-  font-size: 0.9rem;
-  font-weight: 700;                          /* 標準→太字 */
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
   color: #fff;
-  line-height: 1.5;
+  line-height: 1.4;
   text-shadow: 0 0 0.5px rgba(255,255,255,0.3);
 }
 .pool-note strong { color: #ffd700; font-weight: 900; }

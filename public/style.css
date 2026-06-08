@@ -217,16 +217,21 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   height: 100%;              /* 親（vote-card）の高さを占有 */
 }
 .vote-left {
-  flex: 0 0 340px;           /* 幅固定・高さは内容に応じて自然に変化 */
+  flex: 0 0 340px;
   min-width: 0;
   max-width: 340px;
   display: flex;
   flex-direction: column;
+  position: relative;        /* ロゴの絶対配置基準 */
+  height: 100%;              /* 高さ固定 → ロゴ位置がブレない */
+  padding-bottom: 220px;     /* ロゴ用エリアを下端に確保 */
+  box-sizing: border-box;
+  overflow: hidden;          /* フォームがはみ出しても切り取り（ロゴ守る） */
 }
 .vote-right {
-  flex: 1 1 auto;            /* 残り横幅を占有 */
+  flex: 1 1 auto;
   min-width: 0;
-  height: 100%;              /* 親の高さに完全フィット → 左の変化に影響されない */
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -562,30 +567,32 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 .empty-state { text-align: center; padding: 2rem; color: #556; }
 hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
 
-/* ─── FIFA Logo (Mac はコンパクト、Windows は大きめ) ─── */
+/* ─── FIFA Logo (絶対配置で位置固定・賭け式変更でも動かない) ─── */
 .fifa-logo-wrap {
-  margin-top: auto;
-  padding-top: 0.6rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 210px;             /* 固定の高さ領域 */
+  margin-top: 0;
+  padding: 0.6rem 0 0;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   background: transparent;
-  min-height: 0;
-  overflow: hidden;
-  flex-shrink: 1;
 }
 .fifa-logo {
   max-width: 200px;
   width: 100%;
-  max-height: 160px;
+  max-height: 180px;
   object-fit: contain;
   display: block;
 }
 
 /* Windows: ロゴを大きく */
 .is-windows .fifa-logo {
-  max-width: 300px;
-  max-height: 240px;
+  max-width: 280px;
+  max-height: 200px;
 }
 
 @media (max-width: 900px) {

@@ -294,29 +294,41 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   min-height: 0;
 }
 
-/* ─── Team Button (Mac/Windows両対応・崩れ防止) ─── */
+/* ─── Team Button (横並び：国旗左・テキスト右) ─── */
 .team-btn {
   position: relative;
   background: #151a3e;
   border: 1px solid #2a2f5a;
   border-radius: 6px;
-  padding: 0.5rem 0.25rem 0.45rem;
+  padding: 0.5rem 0.4rem 0.5rem 0.5rem;
   color: #ccd;
   cursor: pointer;
   transition: all 0.15s;
-  text-align: center;
+  text-align: left;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;          /* 横並びに変更 */
   align-items: center;
-  justify-content: flex-start;
-  gap: 0.3rem;
-  min-height: 78px;             /* 最低高さを明示 → Macでも崩れない */
+  gap: 0.5rem;                  /* 国旗とテキストの間隔 */
+  min-height: 58px;
   overflow: hidden;
   box-sizing: border-box;
 }
 .team-btn:hover { background: #1a1f4e; border-color: #556; }
 .team-btn.selected { background: #2d1b69; border-color: #ffd700; color: #ffd700; box-shadow: 0 0 0 2px rgba(255,215,0,0.3); }
 .team-btn.disabled { opacity: 0.3; cursor: not-allowed; }
+
+.team-btn .flag {
+  flex-shrink: 0;               /* 国旗は縮まない */
+}
+
+.team-btn-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;                 /* テキスト省略を有効に */
+  flex: 1;
+  gap: 0.15rem;
+}
 
 .team-btn .team-name {
   font-size: 0.74rem;
@@ -332,7 +344,6 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   color: #ffaa00;
   font-weight: 700;
   line-height: 1.2;
-  margin-top: auto;             /* オッズを下端に押し付け */
 }
 
 /* ─── Flag images ─── */
@@ -347,10 +358,10 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 .flag-md { width: 32px; height: 22px; }
 .flag-lg { width: 64px; height: 42px; }
 .order-badge {
-  position: absolute; top: -5px; left: -5px;
+  position: absolute; top: -6px; right: -6px;
   background: #ffd700; color: #1a1f4e; border-radius: 50%;
-  width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
-  font-size: 0.7rem; font-weight: 700; box-shadow: 0 2px 6px rgba(0,0,0,0.4); z-index: 2;
+  width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700; box-shadow: 0 2px 6px rgba(0,0,0,0.4); z-index: 2;
 }
 .td-team { display: flex; align-items: center; }
 

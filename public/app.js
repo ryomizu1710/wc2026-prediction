@@ -212,8 +212,10 @@ function renderTeamGrid() {
       btn.innerHTML = `
         ${orderBadge}
         ${flagImg(team, 'md')}
-        <span class="team-name">${team.name}</span>
-        <span class="team-odds">${odds?.toFixed(1)}倍</span>
+        <div class="team-btn-text">
+          <span class="team-name">${team.name}</span>
+          <span class="team-odds">${odds?.toFixed(1)}倍</span>
+        </div>
       `;
       btn.addEventListener('click', () => {
         if (isFull && !isSelected) return;

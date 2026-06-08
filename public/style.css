@@ -239,20 +239,21 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 .team-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  gap: 0.35rem;
+  /* min-contentで最低限の高さ確保＋残り均等分配 */
+  grid-template-rows: repeat(6, minmax(110px, 1fr));
+  gap: 0.4rem;
   flex: 1;
   min-height: 0;
 }
 .group-section {
   background: #0d1130;
   border-radius: 7px;
-  padding: 0.3rem 0.4rem 0.4rem;
+  padding: 0.4rem 0.45rem 0.5rem;
   border-left: 3px solid #ffd700;
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;             /* hidden → visible で切れ防止 */
 }
 .group-header {
   display: flex;
@@ -279,13 +280,13 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   min-height: 0;
 }
 
-/* ─── Team Button (コンパクト・Mac/Windows両対応) ─── */
+/* ─── Team Button (Windows風レイアウト：flag上・name+oddsを下に密着) ─── */
 .team-btn {
   position: relative;
   background: #151a3e;
   border: 1px solid #2a2f5a;
   border-radius: 5px;
-  padding: 0.35rem 0.2rem 0.3rem;
+  padding: 0.4rem 0.25rem 0.35rem;
   color: #ccd;
   cursor: pointer;
   transition: all 0.15s;
@@ -293,10 +294,10 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 0.18rem;
-  min-height: 64px;             /* コンパクト化（88→64px） */
-  overflow: hidden;
+  justify-content: center;       /* 全体を中央に */
+  gap: 0.3rem;
+  min-height: 78px;              /* Macでも余裕で収まる高さ */
+  overflow: visible;             /* hiddenを外す → 切れ防止 */
   box-sizing: border-box;
 }
 .team-btn:hover { background: #1a1f4e; border-color: #556; }
@@ -311,43 +312,41 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.15rem;
+  justify-content: flex-start;   /* 上揃え（中央寄せ撤廃） */
+  gap: 0.18rem;
   width: 100%;
-  flex: 1;                       /* 残りの空間を埋める */
-  min-height: 0;
+  /* flex: 1 を撤廃 → 内容サイズで完結 */
 }
 
 .team-btn .team-name {
-  font-size: 0.68rem;
-  font-weight: 600;
-  line-height: 1.1;
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1.15;
   width: 100%;
+  color: #fff;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  word-break: break-all;        /* 任意位置で改行可能に */
-  overflow-wrap: anywhere;
-  hyphens: auto;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
-/* 長い国名（11文字以上）はフォントを縮めて表示 */
+/* 長い国名（8文字以上）はフォントを縮めて表示 */
 .team-btn .team-name.long-name {
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 .team-btn .team-name.very-long-name {
-  font-size: 0.52rem;
+  font-size: 0.56rem;
   line-height: 1.0;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
 }
 .team-btn .team-odds {
-  font-size: 0.66rem;
+  font-size: 0.72rem;
   color: #ffaa00;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
-  margin-top: auto;
 }
 
 /* ─── Flag images ─── */

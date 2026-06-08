@@ -221,8 +221,8 @@ function renderTeamGrid() {
         ? `<span class="order-badge">${pickIdx + 1}</span>` : '';
       // 国名の長さに応じてフォント縮小クラスを付与
       const len = team.name.length;
-      const nameClass = len >= 11 ? 'team-name very-long-name'
-                       : len >= 8 ? 'team-name long-name'
+      const nameClass = len >= 10 ? 'team-name very-long-name'
+                       : len >= 7 ? 'team-name long-name'
                        : 'team-name';
       btn.innerHTML = `
         ${orderBadge}

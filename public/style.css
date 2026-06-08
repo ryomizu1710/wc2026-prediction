@@ -614,7 +614,7 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   padding-bottom: 280px;
 }
 .is-windows .vote-left::before {
-  bottom: 280px;             /* Windows用にロゴ用エリアを合わせる */
+  bottom: 280px;
 }
 .is-windows .fifa-logo-wrap {
   height: 270px;
@@ -622,6 +622,20 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
 .is-windows .fifa-logo {
   max-width: 340px;
   max-height: 250px;
+}
+
+/* 三連複・三連単選択時はロゴを非表示 → フォーム全体を見せる */
+.multi-pick-mode .vote-left {
+  padding-bottom: 0;
+}
+.multi-pick-mode .vote-left::before {
+  display: none;
+}
+.multi-pick-mode .fifa-logo-wrap {
+  display: none;
+}
+.is-windows.multi-pick-mode .vote-left {
+  padding-bottom: 0;
 }
 
 @media (max-width: 900px) {

@@ -537,15 +537,28 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   display: block;
 }
 
-/* Windows のみロゴを大きく＆縮まないように */
+/* Windows: ロゴを絶対配置で固定（三連複/三連単で位置がずれない） */
+.is-windows .vote-left {
+  position: relative;
+  padding-bottom: 290px;   /* ロゴ用エリアを下端に確保 */
+}
 .is-windows .fifa-logo-wrap {
-  flex-shrink: 0;          /* 三連複/三連単でも縮まない */
-  padding-top: 1rem;
-  min-height: 280px;       /* ロゴ用の最低高さを確保 */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 0;           /* margin-top: auto を打ち消す */
+  padding-top: 0;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 0;
 }
 .is-windows .fifa-logo {
-  max-width: 360px;
-  max-height: 280px;
+  max-width: 320px;
+  max-height: 260px;
 }
 
 @media (max-width: 900px) {

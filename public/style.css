@@ -567,19 +567,21 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 .empty-state { text-align: center; padding: 2rem; color: #556; }
 hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
 
-/* ─── FIFA Logo (絶対配置で位置固定・賭け式変更でも動かない) ─── */
+/* ─── FIFA Logo (絶対配置で位置固定・フォームの背面に配置) ─── */
 .fifa-logo-wrap {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 210px;             /* 固定の高さ領域 */
+  height: 210px;
   margin-top: 0;
   padding: 0.6rem 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background: transparent;
+  z-index: 0;                /* フォームより背面に */
+  pointer-events: none;      /* ロゴ越しのフォーム操作を妨げない */
 }
 .fifa-logo {
   max-width: 200px;
@@ -589,10 +591,22 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   display: block;
 }
 
+/* フォーム要素をロゴより前面に配置 */
+.vote-left > *:not(.fifa-logo-wrap) {
+  position: relative;
+  z-index: 1;
+}
+
 /* Windows: ロゴを大きく */
+.is-windows .vote-left {
+  padding-bottom: 280px;     /* ロゴエリアを拡大 */
+}
+.is-windows .fifa-logo-wrap {
+  height: 270px;
+}
 .is-windows .fifa-logo {
-  max-width: 280px;
-  max-height: 200px;
+  max-width: 340px;
+  max-height: 250px;
 }
 
 @media (max-width: 900px) {

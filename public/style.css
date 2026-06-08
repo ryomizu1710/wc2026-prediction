@@ -602,11 +602,21 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   display: block;
 }
 
-/* フォーム要素を不透明＋ロゴより前面に配置 */
+/* フォーム要素をロゴより前面に配置（z-indexのみ） */
 .vote-left > *:not(.fifa-logo-wrap) {
   position: relative;
-  z-index: 2;                /* ロゴ(0) と疑似要素(0) より前面 */
-  background: #151a3e;       /* 不透明にしてロゴを完全に隠す */
+  z-index: 2;
+}
+/* 不透明な座布団をフォーム要素に敷く（ボタンは除外 = 黄色グラデを維持） */
+.vote-left > .form-group,
+.vote-left > .form-row,
+.vote-left > .message:not(:empty) {
+  background: #151a3e;
+}
+/* ボタンは自身のグラデを持つので不透明（背景を上書きしない） */
+.vote-left > .btn {
+  position: relative;
+  z-index: 2;
 }
 
 /* Windows: ロゴを大きく */
@@ -624,19 +634,7 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   max-height: 250px;
 }
 
-/* 三連複・三連単選択時はロゴを非表示 → フォーム全体を見せる */
-.multi-pick-mode .vote-left {
-  padding-bottom: 0;
-}
-.multi-pick-mode .vote-left::before {
-  display: none;
-}
-.multi-pick-mode .fifa-logo-wrap {
-  display: none;
-}
-.is-windows.multi-pick-mode .vote-left {
-  padding-bottom: 0;
-}
+/* ロゴは賭け式に関わらず常に下端表示（非表示ルールは削除） */
 
 @media (max-width: 900px) {
   .vote-layout { grid-template-columns: 1fr; }

@@ -28,75 +28,75 @@ app.use(express.static(path.join(__dirname, 'public'), {
 const TEAMS = [
   // Group A
   { name: 'メキシコ', code: 'MEX', group: 'A', iso2: 'mx', defaultOdds: 58.05 },
-  { name: '南アフリカ', code: 'RSA', group: 'A', iso2: 'za', defaultOdds: 128.0 },
-  { name: '韓国', code: 'KOR', group: 'A', iso2: 'kr', defaultOdds: 128.0 },
-  { name: 'チェコ', code: 'CZE', group: 'A', iso2: 'cz', defaultOdds: 128.0 },
+  { name: '南アフリカ', code: 'RSA', group: 'A', iso2: 'za', defaultOdds: 200.0 },
+  { name: '韓国', code: 'KOR', group: 'A', iso2: 'kr', defaultOdds: 150.0 },
+  { name: 'チェコ', code: 'CZE', group: 'A', iso2: 'cz', defaultOdds: 200.0 },
 
   // Group B
   { name: 'カナダ', code: 'CAN', group: 'B', iso2: 'ca', defaultOdds: 178.0 },
-  { name: 'ボスニア・ヘルツェゴビナ', code: 'BIH', group: 'B', iso2: 'ba', defaultOdds: 128.0 },
-  { name: 'カタール', code: 'QAT', group: 'B', iso2: 'qa', defaultOdds: 128.0 },
+  { name: 'ボスニア・ヘルツェゴビナ', code: 'BIH', group: 'B', iso2: 'ba', defaultOdds: 250.0 },
+  { name: 'カタール', code: 'QAT', group: 'B', iso2: 'qa', defaultOdds: 300.0 },
   { name: 'スイス', code: 'SUI', group: 'B', iso2: 'ch', defaultOdds: 92.86 },
 
   // Group C
   { name: 'ブラジル', code: 'BRA', group: 'C', iso2: 'br', defaultOdds: 9.07 },
   { name: 'モロッコ', code: 'MAR', group: 'C', iso2: 'ma', defaultOdds: 53.55 },
-  { name: 'ハイチ', code: 'HAI', group: 'C', iso2: 'ht', defaultOdds: 128.0 },
-  { name: 'スコットランド', code: 'SCO', group: 'C', iso2: 'gb-sct', defaultOdds: 128.0 },
+  { name: 'ハイチ', code: 'HAI', group: 'C', iso2: 'ht', defaultOdds: 500.0 },
+  { name: 'スコットランド', code: 'SCO', group: 'C', iso2: 'gb-sct', defaultOdds: 250.0 },
 
   // Group D
   { name: 'アメリカ', code: 'USA', group: 'D', iso2: 'us', defaultOdds: 65.40 },
   { name: 'パラグアイ', code: 'PAR', group: 'D', iso2: 'py', defaultOdds: 178.0 },
-  { name: 'オーストラリア', code: 'AUS', group: 'D', iso2: 'au', defaultOdds: 128.0 },
-  { name: 'トルコ', code: 'TUR', group: 'D', iso2: 'tr', defaultOdds: 128.0 },
+  { name: 'オーストラリア', code: 'AUS', group: 'D', iso2: 'au', defaultOdds: 250.0 },
+  { name: 'トルコ', code: 'TUR', group: 'D', iso2: 'tr', defaultOdds: 150.0 },
 
   // Group E
   { name: 'ドイツ', code: 'GER', group: 'E', iso2: 'de', defaultOdds: 12.21 },
-  { name: 'キュラソー', code: 'CUW', group: 'E', iso2: 'cw', defaultOdds: 128.0 },
-  { name: 'コートジボワール', code: 'CIV', group: 'E', iso2: 'ci', defaultOdds: 128.0 },
+  { name: 'キュラソー', code: 'CUW', group: 'E', iso2: 'cw', defaultOdds: 500.0 },
+  { name: 'コートジボワール', code: 'CIV', group: 'E', iso2: 'ci', defaultOdds: 150.0 },
   { name: 'エクアドル', code: 'ECU', group: 'E', iso2: 'ec', defaultOdds: 76.62 },
 
   // Group F
   { name: 'オランダ', code: 'NED', group: 'F', iso2: 'nl', defaultOdds: 16.39 },
   { name: '日本', code: 'JPN', group: 'F', iso2: 'jp', defaultOdds: 49.82 },
-  { name: 'スウェーデン', code: 'SWE', group: 'F', iso2: 'se', defaultOdds: 128.0 },
-  { name: 'チュニジア', code: 'TUN', group: 'F', iso2: 'tn', defaultOdds: 128.0 },
+  { name: 'スウェーデン', code: 'SWE', group: 'F', iso2: 'se', defaultOdds: 200.0 },
+  { name: 'チュニジア', code: 'TUN', group: 'F', iso2: 'tn', defaultOdds: 300.0 },
 
   // Group G
   { name: 'ベルギー', code: 'BEL', group: 'G', iso2: 'be', defaultOdds: 24.72 },
-  { name: 'エジプト', code: 'EGY', group: 'G', iso2: 'eg', defaultOdds: 128.0 },
-  { name: 'イラン', code: 'IRN', group: 'G', iso2: 'ir', defaultOdds: 128.0 },
-  { name: 'ニュージーランド', code: 'NZL', group: 'G', iso2: 'nz', defaultOdds: 128.0 },
+  { name: 'エジプト', code: 'EGY', group: 'G', iso2: 'eg', defaultOdds: 200.0 },
+  { name: 'イラン', code: 'IRN', group: 'G', iso2: 'ir', defaultOdds: 300.0 },
+  { name: 'ニュージーランド', code: 'NZL', group: 'G', iso2: 'nz', defaultOdds: 500.0 },
 
   // Group H
   { name: 'スペイン', code: 'ESP', group: 'H', iso2: 'es', defaultOdds: 4.84 },
-  { name: 'カーボベルデ', code: 'CPV', group: 'H', iso2: 'cv', defaultOdds: 128.0 },
-  { name: 'サウジアラビア', code: 'KSA', group: 'H', iso2: 'sa', defaultOdds: 128.0 },
+  { name: 'カーボベルデ', code: 'CPV', group: 'H', iso2: 'cv', defaultOdds: 500.0 },
+  { name: 'サウジアラビア', code: 'KSA', group: 'H', iso2: 'sa', defaultOdds: 300.0 },
   { name: 'ウルグアイ', code: 'URU', group: 'H', iso2: 'uy', defaultOdds: 46.43 },
 
   // Group I
   { name: 'フランス', code: 'FRA', group: 'I', iso2: 'fr', defaultOdds: 6.56 },
   { name: 'セネガル', code: 'SEN', group: 'I', iso2: 'sn', defaultOdds: 116.0 },
-  { name: 'イラク', code: 'IRQ', group: 'I', iso2: 'iq', defaultOdds: 128.0 },
+  { name: 'イラク', code: 'IRQ', group: 'I', iso2: 'iq', defaultOdds: 500.0 },
   { name: 'ノルウェー', code: 'NOR', group: 'I', iso2: 'no', defaultOdds: 27.01 },
 
   // Group J
   { name: 'アルゼンチン', code: 'ARG', group: 'J', iso2: 'ar', defaultOdds: 8.39 },
-  { name: 'アルジェリア', code: 'ALG', group: 'J', iso2: 'dz', defaultOdds: 128.0 },
+  { name: 'アルジェリア', code: 'ALG', group: 'J', iso2: 'dz', defaultOdds: 250.0 },
   { name: 'オーストリア', code: 'AUT', group: 'J', iso2: 'at', defaultOdds: 116.0 },
-  { name: 'ヨルダン', code: 'JOR', group: 'J', iso2: 'jo', defaultOdds: 128.0 },
+  { name: 'ヨルダン', code: 'JOR', group: 'J', iso2: 'jo', defaultOdds: 500.0 },
 
   // Group K
   { name: 'ポルトガル', code: 'POR', group: 'K', iso2: 'pt', defaultOdds: 10.50 },
-  { name: 'コンゴ民主共和国', code: 'COD', group: 'K', iso2: 'cd', defaultOdds: 128.0 },
-  { name: 'ウズベキスタン', code: 'UZB', group: 'K', iso2: 'uz', defaultOdds: 128.0 },
+  { name: 'コンゴ民主共和国', code: 'COD', group: 'K', iso2: 'cd', defaultOdds: 400.0 },
+  { name: 'ウズベキスタン', code: 'UZB', group: 'K', iso2: 'uz', defaultOdds: 500.0 },
   { name: 'コロンビア', code: 'COL', group: 'K', iso2: 'co', defaultOdds: 46.44 },
 
   // Group L
   { name: 'イングランド', code: 'ENG', group: 'L', iso2: 'gb-eng', defaultOdds: 6.36 },
   { name: 'クロアチア', code: 'CRO', group: 'L', iso2: 'hr', defaultOdds: 71.41 },
-  { name: 'ガーナ', code: 'GHA', group: 'L', iso2: 'gh', defaultOdds: 128.0 },
-  { name: 'パナマ', code: 'PAN', group: 'L', iso2: 'pa', defaultOdds: 128.0 },
+  { name: 'ガーナ', code: 'GHA', group: 'L', iso2: 'gh', defaultOdds: 200.0 },
+  { name: 'パナマ', code: 'PAN', group: 'L', iso2: 'pa', defaultOdds: 400.0 },
 ];
 
 const INITIAL_COINS = 5000;

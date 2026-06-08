@@ -709,6 +709,94 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   font-size: 0.58rem;
 }
 
+/* ─── Mac専用：上部ヘッダー・プール・左フォーム・ロゴを90%縮小 ─── */
+/* 上部ヘッダー */
+.is-mac header {
+  padding: 0.35rem 1rem;
+}
+.is-mac header h1 {
+  font-size: 0.9rem;
+}
+.is-mac .subtitle {
+  font-size: 0.72rem;
+}
+
+/* プール状況 */
+.is-mac .pool-item {
+  padding: 0.3rem 0.6rem;
+}
+.is-mac .pool-label {
+  font-size: 0.81rem;
+}
+.is-mac .pool-value {
+  font-size: 0.99rem;
+}
+.is-mac .pool-note {
+  font-size: 0.77rem;
+}
+
+/* 左フォーム要素 */
+.is-mac .vote-left .form-group label {
+  font-size: 0.81rem;
+}
+.is-mac .vote-left input[type="text"],
+.is-mac .vote-left input[type="number"],
+.is-mac .vote-left select {
+  font-size: 0.79rem;
+  padding: 0.36rem 0.54rem;
+}
+.is-mac .vote-left .balance-box {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.45rem;
+}
+.is-mac .vote-left .bet-type-card {
+  padding: 0.27rem 0.22rem;
+}
+.is-mac .vote-left .bet-type-name {
+  font-size: 0.74rem;
+}
+.is-mac .vote-left .bet-type-desc {
+  font-size: 0.56rem;
+}
+.is-mac .vote-left .pick-slot {
+  font-size: 0.7rem;
+  padding: 0.22rem 0.45rem;
+}
+.is-mac .vote-left .pick-slot .slot-label {
+  font-size: 0.77rem;
+  min-width: 72px;
+}
+.is-mac .vote-left .amount-control input {
+  font-size: 0.99rem;
+}
+.is-mac .vote-left .amount-btn {
+  font-size: 0.77rem;
+  padding: 0.45rem 0.63rem;
+}
+.is-mac .vote-left .payout-preview {
+  font-size: 0.81rem;
+  padding: 0.54rem;
+}
+.is-mac .vote-left .btn {
+  font-size: 0.81rem;
+  padding: 0.5rem 1.08rem;
+}
+
+/* ロゴ 90% */
+.is-mac .vote-left {
+  padding-bottom: 200px;         /* 220 → 200 */
+}
+.is-mac .vote-left::before {
+  bottom: 200px;
+}
+.is-mac .fifa-logo-wrap {
+  height: 190px;                 /* 210 → 190 */
+}
+.is-mac .fifa-logo {
+  max-width: 180px;              /* 200 → 180 */
+  max-height: 162px;             /* 180 → 162 */
+}
+
 /* Windowsは従来通り（変更なし） */
 
 @media (max-width: 900px) {

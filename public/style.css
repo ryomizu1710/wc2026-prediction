@@ -1,58 +1,21 @@
-/* ─── Fixture Font (静的OTF版、重み別) ─── */
-@font-face {
-  font-family: 'Fixture';
-  src: url('/fonts/Fixture%20Thin.otf') format('opentype');
-  font-weight: 100; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Fixture';
-  src: url('/fonts/Fixture%20ExtraLight.otf') format('opentype');
-  font-weight: 200; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Fixture';
-  src: url('/fonts/Fixture%20Light.otf') format('opentype');
-  font-weight: 300; font-style: normal; font-display: swap;
-}
+/* ─── Fixture Font (3ウェイトのみ・約330KB) ─── */
+/* font-weight 100-500 は Regular を使用 */
 @font-face {
   font-family: 'Fixture';
   src: url('/fonts/Fixture%20Regular.otf') format('opentype');
-  font-weight: 400; font-style: normal; font-display: swap;
+  font-weight: 100 500; font-style: normal; font-display: swap;
 }
-@font-face {
-  font-family: 'Fixture';
-  src: url('/fonts/Fixture%20Medium.otf') format('opentype');
-  font-weight: 500; font-style: normal; font-display: swap;
-}
+/* font-weight 600 は SemiBold */
 @font-face {
   font-family: 'Fixture';
   src: url('/fonts/Fixture%20SemiBold.otf') format('opentype');
   font-weight: 600; font-style: normal; font-display: swap;
 }
+/* font-weight 700-900 は Bold を使用 */
 @font-face {
   font-family: 'Fixture';
   src: url('/fonts/Fixture%20Bold.otf') format('opentype');
-  font-weight: 700; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Fixture';
-  src: url('/fonts/Fixture%20ExtraBold.otf') format('opentype');
-  font-weight: 800; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Fixture';
-  src: url('/fonts/Fixture%20Black.otf') format('opentype');
-  font-weight: 900; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Fixture';
-  src: url('/fonts/Fixture%20Italic%20Regular.otf') format('opentype');
-  font-weight: 400; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: 'Fixture';
-  src: url('/fonts/Fixture%20Italic%20Bold.otf') format('opentype');
-  font-weight: 700; font-style: italic; font-display: swap;
+  font-weight: 700 900; font-style: normal; font-display: swap;
 }
 
 * {
@@ -254,16 +217,15 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 .team-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* 各行：コンテンツに合わせて最低限の高さを確保しつつ余白があれば均等に伸びる */
-  grid-template-rows: repeat(6, minmax(min-content, 1fr));
-  gap: 0.4rem;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0.35rem;
   flex: 1;
   min-height: 0;
 }
 .group-section {
   background: #0d1130;
-  border-radius: 8px;
-  padding: 0.45rem 0.5rem 0.55rem;
+  border-radius: 7px;
+  padding: 0.3rem 0.4rem 0.4rem;
   border-left: 3px solid #ffd700;
   display: flex;
   flex-direction: column;
@@ -273,35 +235,35 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 .group-header {
   display: flex;
   align-items: center;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.25rem;
   flex-shrink: 0;
 }
 .group-badge {
   display: inline-block;
   background: #ffd700;
   color: #1a1f4e;
-  padding: 0.12rem 0.55rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 3px;
+  font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   line-height: 1.3;
 }
 .group-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.4rem;
+  gap: 0.3rem;
   flex: 1;
   min-height: 0;
 }
 
-/* ─── Team Button (縦並び：国旗上・国名+オッズ下・長い名前も2行で表示) ─── */
+/* ─── Team Button (コンパクト・Mac/Windows両対応) ─── */
 .team-btn {
   position: relative;
   background: #151a3e;
   border: 1px solid #2a2f5a;
-  border-radius: 6px;
-  padding: 0.5rem 0.3rem 0.45rem;
+  border-radius: 5px;
+  padding: 0.35rem 0.2rem 0.3rem;
   color: #ccd;
   cursor: pointer;
   transition: all 0.15s;
@@ -310,8 +272,8 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.3rem;
-  min-height: 88px;             /* 2行の国名+国旗+オッズが確実に入る高さ */
+  gap: 0.18rem;
+  min-height: 64px;             /* コンパクト化（88→64px） */
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -335,11 +297,10 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 }
 
 .team-btn .team-name {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  line-height: 1.15;
+  line-height: 1.1;
   width: 100%;
-  /* 2行まで折り返しOK、長くなれば省略 */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -348,11 +309,11 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   overflow-wrap: anywhere;
 }
 .team-btn .team-odds {
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   color: #ffaa00;
   font-weight: 700;
   line-height: 1.2;
-  margin-top: auto;             /* オッズは下端 */
+  margin-top: auto;
 }
 
 /* ─── Flag images ─── */
@@ -364,7 +325,7 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   flex-shrink: 0;
 }
 .flag-sm { width: 18px; height: 13px; margin-right: 0.3rem; display: inline-block; vertical-align: middle; }
-.flag-md { width: 32px; height: 22px; }
+.flag-md { width: 26px; height: 18px; }       /* コンパクト化（32x22→26x18） */
 .flag-lg { width: 64px; height: 42px; }
 .order-badge {
   position: absolute; top: -6px; right: -6px;
@@ -423,7 +384,7 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 /* ─── Pool Status (full-width, evenly spread) ─── */
 .pool-status-inline {
   width: 100%;
-  margin-bottom: 3rem;
+  margin-bottom: 1.2rem;
 }
 .pool-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem;
@@ -552,21 +513,22 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 .empty-state { text-align: center; padding: 2rem; color: #556; }
 hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
 
-/* ─── FIFA Logo (bottom-aligned with team grid) ─── */
+/* ─── FIFA Logo (コンパクト・投票ボタン被り防止) ─── */
 .fifa-logo-wrap {
   margin-top: auto;
-  padding: 0;
+  padding-top: 0.6rem;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   background: transparent;
   min-height: 0;
   overflow: hidden;
+  flex-shrink: 1;
 }
 .fifa-logo {
-  max-width: 340px;
+  max-width: 200px;
   width: 100%;
-  max-height: 280px;
+  max-height: 160px;
   object-fit: contain;
   display: block;
 }

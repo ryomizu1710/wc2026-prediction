@@ -1,0 +1,6 @@
+# 使用する3ウェイトのみGitに含める。それ以外は無視。
+*
+!.gitignore
+!Fixture Regular.otf
+!Fixture SemiBold.otf
+!Fixture Bold.otf

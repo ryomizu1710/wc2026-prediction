@@ -7,7 +7,21 @@ const PORT = process.env.PORT || 3000;
 const DATA_FILE = path.join(__dirname, 'data.json');
 
 app.use(express.json({ limit: '10mb' }));
-app.use(express.static(path.join(__dirname, 'public')));
+
+// 静的ファイルに30日間ブラウザキャッシュを適用（フォント・画像・CSS・JS）
+app.use(express.static(path.join(__dirname, 'public'), {
+  maxAge: '30d',
+  etag: true,
+  setHeaders: (res, filePath) => {
+    // HTMLだけはキャッシュしない（更新の反映のため）
+    if (filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-cache');
+    } else if (filePath.endsWith('.otf') || filePath.endsWith('.woff2') || filePath.endsWith('.png')) {
+      // フォント・画像は1年キャッシュ（CDNでも同様に保持）
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    }
+  },
+}));
 
 // ─── チーム定義（48チーム）── 公式グループ分け + ブックメーカーオッズ準拠 ───
 // iso2: flagcdn.com で使う ISO 3166-1 alpha-2 コード（または gb-eng 等の地域コード）

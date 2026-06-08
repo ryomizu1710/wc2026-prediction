@@ -254,7 +254,8 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 .team-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  /* 各行：コンテンツに合わせて最低限の高さを確保しつつ余白があれば均等に伸びる */
+  grid-template-rows: repeat(6, minmax(min-content, 1fr));
   gap: 0.4rem;
   flex: 1;
   min-height: 0;
@@ -294,22 +295,23 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
   min-height: 0;
 }
 
-/* ─── Team Button (横並び：国旗左・テキスト右) ─── */
+/* ─── Team Button (縦並び：国旗上・国名+オッズ下・長い名前も2行で表示) ─── */
 .team-btn {
   position: relative;
   background: #151a3e;
   border: 1px solid #2a2f5a;
   border-radius: 6px;
-  padding: 0.5rem 0.4rem 0.5rem 0.5rem;
+  padding: 0.5rem 0.3rem 0.45rem;
   color: #ccd;
   cursor: pointer;
   transition: all 0.15s;
-  text-align: left;
+  text-align: center;
   display: flex;
-  flex-direction: row;          /* 横並びに変更 */
+  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;                  /* 国旗とテキストの間隔 */
-  min-height: 58px;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  min-height: 88px;             /* 2行の国名+国旗+オッズが確実に入る高さ */
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -318,32 +320,39 @@ input:focus, select:focus { outline: none; border-color: #ffd700; }
 .team-btn.disabled { opacity: 0.3; cursor: not-allowed; }
 
 .team-btn .flag {
-  flex-shrink: 0;               /* 国旗は縮まない */
+  flex-shrink: 0;
 }
 
 .team-btn-text {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  min-width: 0;                 /* テキスト省略を有効に */
-  flex: 1;
   gap: 0.15rem;
+  width: 100%;
+  flex: 1;                       /* 残りの空間を埋める */
+  min-height: 0;
 }
 
 .team-btn .team-name {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  line-height: 1.2;
-  max-width: 100%;
+  line-height: 1.15;
+  width: 100%;
+  /* 2行まで折り返しOK、長くなれば省略 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 .team-btn .team-odds {
   font-size: 0.72rem;
   color: #ffaa00;
   font-weight: 700;
   line-height: 1.2;
+  margin-top: auto;             /* オッズは下端 */
 }
 
 /* ─── Flag images ─── */

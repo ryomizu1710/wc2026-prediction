@@ -669,7 +669,23 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   max-height: 250px;
 }
 
-/* ロゴは賭け式に関わらず常に下端表示（非表示ルールは削除） */
+/* ロゴは賭け式に関わらず常に下端表示 */
+
+/* Mac × 三連複/三連単時のみ：ロゴエリアを縮小して投票ボタンを表示 */
+.is-mac.multi-pick-mode .vote-left {
+  padding-bottom: 90px;        /* 220px → 90px に縮小 */
+}
+.is-mac.multi-pick-mode .vote-left::before {
+  bottom: 90px;
+}
+.is-mac.multi-pick-mode .fifa-logo-wrap {
+  height: 80px;                /* 210px → 80px に縮小 */
+}
+.is-mac.multi-pick-mode .fifa-logo {
+  max-width: 130px;            /* 200px → 130px に縮小 */
+  max-height: 70px;
+}
+/* Windowsは従来通り（ロゴ大きいまま）→ ここでは何もしない */
 
 @media (max-width: 900px) {
   .vote-layout { grid-template-columns: 1fr; }

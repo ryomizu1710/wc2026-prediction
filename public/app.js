@@ -136,9 +136,17 @@ function setupBetTypeCards() {
       renderTeamGrid();
       updatePickLabel();
       updateBetAmountVisibility();
+      updateMultiPickMode();
     });
   });
   updatePickLabel();
+  updateMultiPickMode();
+}
+
+// 三連複/三連単選択時に <html> へクラス付与（Mac専用でロゴ縮小に使用）
+function updateMultiPickMode() {
+  const isMulti = currentBetType === 'trio' || currentBetType === 'trifecta';
+  document.documentElement.classList.toggle('multi-pick-mode', isMulti);
 }
 
 function updatePickLabel() {

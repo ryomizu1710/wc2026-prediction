@@ -709,45 +709,46 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   font-size: 0.58rem;
 }
 
-/* ─── Mac専用：ウィンドウサイズが小さい時も縮尺を維持 ─── */
-/* 全画面でない時は縦スクロールを許可して、コンテンツのサイズを保つ */
-html.is-mac, html.is-mac body {
-  height: auto;
-  min-height: 100vh;
-  overflow: visible;
-  overflow-y: auto;
-}
-/* 親コンテナも auto に */
-.is-mac .panel.active {
-  min-height: calc(100vh - 90px);   /* ヘッダー+タブ分を引いた残り */
-}
-.is-mac #vote.panel.active {
-  height: auto;
-  flex: 0 0 auto;
-}
-.is-mac .vote-card {
-  height: auto;
-  flex: 0 0 auto;
-}
-.is-mac .vote-layout {
-  height: auto;
-  min-height: 720px;                /* 内容が確実に収まる最低高さ */
-  flex: 0 0 auto;
-}
-.is-mac .vote-right {
-  height: auto;
-  min-height: 720px;
-}
-.is-mac .vote-left {
-  height: auto;
-  min-height: 720px;
-}
-
-/* Mac専用：チームグリッドの各行に最低高さを確保 → 縦が縮んでも潰れない */
-.is-mac .team-grid {
-  grid-template-rows: repeat(6, minmax(110px, 1fr));
-  overflow: visible;
-  min-height: 700px;
+/* ─── Mac専用：小さなウィンドウ時（縦800px未満）のみスクロール許可 ─── */
+/* 通常はWindowsと同じ 1ページ表示（全画面・縦800px以上） */
+@media (max-height: 799px) {
+  html.is-mac, html.is-mac body {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    overflow-y: auto;
+  }
+  /* 親コンテナも auto に */
+  .is-mac .panel.active {
+    min-height: calc(100vh - 90px);
+  }
+  .is-mac #vote.panel.active {
+    height: auto;
+    flex: 0 0 auto;
+  }
+  .is-mac .vote-card {
+    height: auto;
+    flex: 0 0 auto;
+  }
+  .is-mac .vote-layout {
+    height: auto;
+    min-height: 720px;
+    flex: 0 0 auto;
+  }
+  .is-mac .vote-right {
+    height: auto;
+    min-height: 720px;
+  }
+  .is-mac .vote-left {
+    height: auto;
+    min-height: 720px;
+  }
+  /* チームグリッドの各行に最低高さを確保 → 縦が縮んでも潰れない */
+  .is-mac .team-grid {
+    grid-template-rows: repeat(6, minmax(110px, 1fr));
+    overflow: visible;
+    min-height: 700px;
+  }
 }
 
 /* ─── Mac専用：上部ヘッダー・プール・左フォーム・ロゴを90%縮小 ─── */

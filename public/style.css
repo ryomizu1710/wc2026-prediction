@@ -55,15 +55,48 @@
   font-weight: 700; font-style: italic; font-display: swap;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;     /* Macのフォントを綺麗に */
+  -moz-osx-font-smoothing: grayscale;
+}
 
 html, body {
-  font-family: 'Fixture', 'Segoe UI', 'Hiragino Sans', 'Meiryo', sans-serif;
+  font-family: 'Fixture',
+    -apple-system, BlinkMacSystemFont,  /* Mac: San Francisco */
+    'Segoe UI',                          /* Windows */
+    'Hiragino Sans', 'Hiragino Kaku Gothic ProN',  /* Mac日本語 */
+    'Yu Gothic', 'Meiryo',               /* Windows日本語 */
+    sans-serif;
   background: #0a0e27;
   color: #e0e0e0;
   height: 100vh;
   overflow: hidden;
+  text-rendering: optimizeLegibility;
+  /* Safari/iOS のフォントズーム防止 */
+  -webkit-text-size-adjust: 100%;
 }
+
+/* Safari の input/select 見た目を統一 */
+input, select, button, textarea {
+  font-family: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Safari の数値入力スピナーを統一表示 */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Safari でボタンの太字が違って見える対策 */
+button { font-weight: inherit; }
 body { display: flex; flex-direction: column; }
 
 /* ─── Header (slim) ─── */

@@ -220,25 +220,145 @@ function mustWinWith(otherBet, anchorBet) {
   return false;
 }
 
-// ─── 各参加者の「最大払戻」を、プール上限を考慮して試算 ───
+// ─── 各参加者の「最大払戻」を、プール上限を考慮して試算（簡易版・後方互換用） ───
 function projectMaxPayout(userName, allBets, pool) {
   const userBets = allBets.filter(b => b.name === userName);
   let maxPayout = 0;
-
   for (const anchor of userBets) {
-    // このベットが当たるシナリオで「確実に同時当選」する全ベット
     const concurrent = allBets.filter(b => mustWinWith(b, anchor));
     const totalRaw = concurrent.reduce((s, b) => s + b.amount * b.odds, 0);
     const scale = totalRaw > 0 ? Math.min(1, pool / totalRaw) : 1;
-
-    // 自分の同時当選分の払戻合計
     const myPayout = concurrent
       .filter(b => b.name === userName)
       .reduce((s, b) => s + b.amount * b.odds * scale, 0);
-
     if (myPayout > maxPayout) maxPayout = myPayout;
   }
   return Math.round(maxPayout);
+}
+
+// ─── 全結果パターン総当たりで、各参加者の真の最大払戻を計算 ───
+// 48 × 47 × 46 = 103,776 通りの1〜3位を全列挙し、
+// 各シナリオで全参加者の払戻を計算 → 各参加者の最大値を記録
+function projectMaxPayoutFull(allBets, pool) {
+  if (allBets.length === 0) return {};
+  const codes = TEAMS.map(t => t.code);
+  const userMax = new Map();
+
+  // 事前にベットをタイプ別グループ化（高速化）
+  const winBets = allBets.filter(b => b.type === 'win');
+  const placeBets = allBets.filter(b => b.type === 'place');
+  const trioBets = allBets.filter(b => b.type === 'trio');
+  const trifectaBets = allBets.filter(b => b.type === 'trifecta');
+
+  // 'win' 当選額をチーム別に事前集計
+  const winRawByTeam = new Map();
+  for (const b of winBets) {
+    const key = b.picks[0];
+    const arr = winRawByTeam.get(key) || [];
+    arr.push(b);
+    winRawByTeam.set(key, arr);
+  }
+  // 'place' も同様
+  const placeRawByTeam = new Map();
+  for (const b of placeBets) {
+    const key = b.picks[0];
+    const arr = placeRawByTeam.get(key) || [];
+    arr.push(b);
+    placeRawByTeam.set(key, arr);
+  }
+  // 'trio' をソート済キーで事前集計
+  const trioByKey = new Map();
+  for (const b of trioBets) {
+    const key = [...b.picks].sort().join('|');
+    const arr = trioByKey.get(key) || [];
+    arr.push(b);
+    trioByKey.set(key, arr);
+  }
+  // 'trifecta' を順序通りキーで事前集計
+  const trifectaByKey = new Map();
+  for (const b of trifectaBets) {
+    const key = b.picks.join('|');
+    const arr = trifectaByKey.get(key) || [];
+    arr.push(b);
+    trifectaByKey.set(key, arr);
+  }
+
+  // 全シナリオ列挙：1位、2位、3位の組み合わせ
+  for (let i = 0; i < codes.length; i++) {
+    const c1 = codes[i];
+    const winners = winRawByTeam.get(c1) || [];
+
+    for (let j = 0; j < codes.length; j++) {
+      if (j === i) continue;
+      const c2 = codes[j];
+
+      for (let k = 0; k < codes.length; k++) {
+        if (k === i || k === j) continue;
+        const c3 = codes[k];
+
+        // このシナリオで当選するベットを収集
+        const wonBets = [];
+        let totalRaw = 0;
+
+        // win bets
+        for (const b of winners) {
+          const raw = b.amount * b.odds;
+          totalRaw += raw;
+          wonBets.push({ name: b.name, raw });
+        }
+        // place bets (1〜3位のいずれか)
+        for (const team of [c1, c2, c3]) {
+          const arr = placeRawByTeam.get(team) || [];
+          for (const b of arr) {
+            const raw = b.amount * b.odds;
+            totalRaw += raw;
+            wonBets.push({ name: b.name, raw });
+          }
+        }
+        // trio bets ({c1,c2,c3} ソート済キーと一致)
+        const trioKey = [c1, c2, c3].slice().sort().join('|');
+        const trios = trioByKey.get(trioKey) || [];
+        for (const b of trios) {
+          const raw = b.amount * b.odds;
+          totalRaw += raw;
+          wonBets.push({ name: b.name, raw });
+        }
+        // trifecta bets (順序通り一致)
+        const trifectaKey = `${c1}|${c2}|${c3}`;
+        const trifs = trifectaByKey.get(trifectaKey) || [];
+        for (const b of trifs) {
+          const raw = b.amount * b.odds;
+          totalRaw += raw;
+          wonBets.push({ name: b.name, raw });
+        }
+
+        if (wonBets.length === 0) continue;
+
+        // プール上限による縮小
+        const scale = totalRaw > 0 ? Math.min(1, pool / totalRaw) : 1;
+
+        // 参加者ごとの払戻を集計
+        const perUser = new Map();
+        for (const w of wonBets) {
+          const payout = w.raw * scale;
+          perUser.set(w.name, (perUser.get(w.name) || 0) + payout);
+        }
+        // 各参加者の最大値を更新
+        for (const [name, payout] of perUser) {
+          if (payout > (userMax.get(name) || 0)) {
+            userMax.set(name, payout);
+          }
+        }
+      }
+    }
+  }
+
+  // オブジェクト形式で返却
+  const result = {};
+  for (const [name, payout] of userMax) {
+    result[name] = Math.round(payout);
+  }
+  return result;
 }
 
 // ─── API ───
@@ -373,23 +493,26 @@ app.delete('/api/bet/:id', (req, res) => {
   res.json({ success: true });
 });
 
-// 参加者一覧（残高付き / プール調整後の最大払戻試算付き）
+// 参加者一覧（残高付き / プール調整後の真の最大払戻つき）
 app.get('/api/participants', (_req, res) => {
   const data = loadData();
   const stats = getPoolStats(data);
   const names = [...new Set(data.bets.map(b => b.name))];
+
+  // 全シナリオ列挙で各参加者の最大払戻を一括計算（全他人の投票を反映）
+  const maxPayoutMap = projectMaxPayoutFull(data.bets, stats.pool);
+
   const participants = names.map(name => {
     const userBets = data.bets.filter(b => b.name === name);
     const spent = userBets.reduce((s, b) => s + b.amount, 0);
     const rawMax = Math.max(0, ...userBets.map(b => Math.round(b.amount * b.odds)));
-    const projectedMax = projectMaxPayout(name, data.bets, stats.pool);
     return {
       name,
       betCount: userBets.length,
       spent,
       balance: INITIAL_COINS - spent,
-      rawMaxPayout: rawMax,        // オッズそのまま
-      projectedMaxPayout: projectedMax, // プール上限・同時当選を考慮した近似
+      rawMaxPayout: rawMax,                       // オッズそのまま
+      projectedMaxPayout: maxPayoutMap[name] || 0, // 全シナリオ総当たりで導出
     };
   });
   res.json(participants);

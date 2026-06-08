@@ -1,0 +1,657 @@
+{
+  "bets": [
+    {
+      "id": "mq58yby94bol",
+      "name": "Demo_田中",
+      "type": "place",
+      "picks": [
+        "TUN"
+      ],
+      "amount": 2200,
+      "odds": 105,
+      "timestamp": "2026-06-08T13:28:40.449Z"
+    },
+    {
+      "id": "mq58yc21v46j",
+      "name": "Demo_田中",
+      "type": "win",
+      "picks": [
+        "IRQ"
+      ],
+      "amount": 700,
+      "odds": 500,
+      "timestamp": "2026-06-08T13:28:40.585Z"
+    },
+    {
+      "id": "mq58yc5f9iwb",
+      "name": "Demo_田中",
+      "type": "win",
+      "picks": [
+        "COD"
+      ],
+      "amount": 200,
+      "odds": 400,
+      "timestamp": "2026-06-08T13:28:40.707Z"
+    },
+    {
+      "id": "mq58yc98p1qa",
+      "name": "Demo_田中",
+      "type": "win",
+      "picks": [
+        "EGY"
+      ],
+      "amount": 1900,
+      "odds": 200,
+      "timestamp": "2026-06-08T13:28:40.844Z"
+    },
+    {
+      "id": "mq58yccnht1b",
+      "name": "Demo_佐藤",
+      "type": "place",
+      "picks": [
+        "QAT"
+      ],
+      "amount": 3000,
+      "odds": 105,
+      "timestamp": "2026-06-08T13:28:40.967Z"
+    },
+    {
+      "id": "mq58ycg69crm",
+      "name": "Demo_佐藤",
+      "type": "win",
+      "picks": [
+        "NZL"
+      ],
+      "amount": 1800,
+      "odds": 500,
+      "timestamp": "2026-06-08T13:28:41.094Z"
+    },
+    {
+      "id": "mq58ycjlazrj",
+      "name": "Demo_佐藤",
+      "type": "win",
+      "picks": [
+        "CUW"
+      ],
+      "amount": 200,
+      "odds": 500,
+      "timestamp": "2026-06-08T13:28:41.217Z"
+    },
+    {
+      "id": "mq58ycna4myq",
+      "name": "Demo_鈴木",
+      "type": "place",
+      "picks": [
+        "BEL"
+      ],
+      "amount": 200,
+      "odds": 8.7,
+      "timestamp": "2026-06-08T13:28:41.350Z"
+    },
+    {
+      "id": "mq58ycqkep3o",
+      "name": "Demo_鈴木",
+      "type": "place",
+      "picks": [
+        "CUW"
+      ],
+      "amount": 4800,
+      "odds": 175,
+      "timestamp": "2026-06-08T13:28:41.468Z"
+    },
+    {
+      "id": "mq58ycvtx4ha",
+      "name": "Demo_高橋",
+      "type": "trifecta",
+      "picks": [
+        "COD",
+        "JPN",
+        "KOR"
+      ],
+      "amount": 800,
+      "odds": 24917.5,
+      "timestamp": "2026-06-08T13:28:41.657Z"
+    },
+    {
+      "id": "mq58yd1vav78",
+      "name": "Demo_高橋",
+      "type": "trifecta",
+      "picks": [
+        "BRA",
+        "IRN",
+        "SEN"
+      ],
+      "amount": 3700,
+      "odds": 3713,
+      "timestamp": "2026-06-08T13:28:41.875Z"
+    },
+    {
+      "id": "mq58yd7qtfpn",
+      "name": "Demo_高橋",
+      "type": "place",
+      "picks": [
+        "GER"
+      ],
+      "amount": 500,
+      "odds": 4.3,
+      "timestamp": "2026-06-08T13:28:42.086Z"
+    },
+    {
+      "id": "mq58yddjd98o",
+      "name": "Demo_伊藤",
+      "type": "win",
+      "picks": [
+        "NED"
+      ],
+      "amount": 1400,
+      "odds": 16.39,
+      "timestamp": "2026-06-08T13:28:42.295Z"
+    },
+    {
+      "id": "mq58ydh9d25m",
+      "name": "Demo_伊藤",
+      "type": "trio",
+      "picks": [
+        "USA",
+        "ENG",
+        "AUT"
+      ],
+      "amount": 1700,
+      "odds": 257,
+      "timestamp": "2026-06-08T13:28:42.429Z"
+    },
+    {
+      "id": "mq58ydpgto4a",
+      "name": "Demo_伊藤",
+      "type": "place",
+      "picks": [
+        "NED"
+      ],
+      "amount": 500,
+      "odds": 5.7,
+      "timestamp": "2026-06-08T13:28:42.724Z"
+    },
+    {
+      "id": "mq58ydsstabk",
+      "name": "Demo_伊藤",
+      "type": "trifecta",
+      "picks": [
+        "TUR",
+        "FRA",
+        "ALG"
+      ],
+      "amount": 1400,
+      "odds": 3025.5,
+      "timestamp": "2026-06-08T13:28:42.844Z"
+    },
+    {
+      "id": "mq58ydyjoi2b",
+      "name": "Demo_渡辺",
+      "type": "win",
+      "picks": [
+        "PAN"
+      ],
+      "amount": 300,
+      "odds": 400,
+      "timestamp": "2026-06-08T13:28:43.051Z"
+    },
+    {
+      "id": "mq58ye4dlead",
+      "name": "Demo_渡辺",
+      "type": "win",
+      "picks": [
+        "FRA"
+      ],
+      "amount": 4700,
+      "odds": 6.56,
+      "timestamp": "2026-06-08T13:28:43.261Z"
+    },
+    {
+      "id": "mq58yebi9l58",
+      "name": "Demo_山本",
+      "type": "trifecta",
+      "picks": [
+        "QAT",
+        "PAR",
+        "ESP"
+      ],
+      "amount": 3000,
+      "odds": 2676.5,
+      "timestamp": "2026-06-08T13:28:43.518Z"
+    },
+    {
+      "id": "mq58yeh2yhs4",
+      "name": "Demo_山本",
+      "type": "win",
+      "picks": [
+        "SUI"
+      ],
+      "amount": 2000,
+      "odds": 92.86,
+      "timestamp": "2026-06-08T13:28:43.718Z"
+    },
+    {
+      "id": "mq58yenme4hz",
+      "name": "Demo_中村",
+      "type": "trifecta",
+      "picks": [
+        "QAT",
+        "CPV",
+        "CAN"
+      ],
+      "amount": 2600,
+      "odds": 136503,
+      "timestamp": "2026-06-08T13:28:43.954Z"
+    },
+    {
+      "id": "mq58yeqngo80",
+      "name": "Demo_中村",
+      "type": "place",
+      "picks": [
+        "SUI"
+      ],
+      "amount": 2200,
+      "odds": 32.5,
+      "timestamp": "2026-06-08T13:28:44.063Z"
+    },
+    {
+      "id": "mq58yeu666my",
+      "name": "Demo_中村",
+      "type": "win",
+      "picks": [
+        "JPN"
+      ],
+      "amount": 200,
+      "odds": 49.82,
+      "timestamp": "2026-06-08T13:28:44.190Z"
+    },
+    {
+      "id": "mq58yexkpg3b",
+      "name": "Demo_小林",
+      "type": "win",
+      "picks": [
+        "NED"
+      ],
+      "amount": 4700,
+      "odds": 16.39,
+      "timestamp": "2026-06-08T13:28:44.312Z"
+    },
+    {
+      "id": "mq58yf199xzn",
+      "name": "Demo_小林",
+      "type": "win",
+      "picks": [
+        "EGY"
+      ],
+      "amount": 200,
+      "odds": 200,
+      "timestamp": "2026-06-08T13:28:44.445Z"
+    },
+    {
+      "id": "mq58yf51wvl7",
+      "name": "Demo_小林",
+      "type": "place",
+      "picks": [
+        "NOR"
+      ],
+      "amount": 100,
+      "odds": 9.5,
+      "timestamp": "2026-06-08T13:28:44.581Z"
+    },
+    {
+      "id": "mq58yfahzr1l",
+      "name": "Demo_加藤",
+      "type": "place",
+      "picks": [
+        "KOR"
+      ],
+      "amount": 4500,
+      "odds": 52.5,
+      "timestamp": "2026-06-08T13:28:44.777Z"
+    },
+    {
+      "id": "mq58yfemlfzd",
+      "name": "Demo_加藤",
+      "type": "trifecta",
+      "picks": [
+        "RSA",
+        "TUR",
+        "ECU"
+      ],
+      "amount": 500,
+      "odds": 26939.5,
+      "timestamp": "2026-06-08T13:28:44.926Z"
+    },
+    {
+      "id": "mq58yfhuka5a",
+      "name": "Demo_吉田",
+      "type": "place",
+      "picks": [
+        "GER"
+      ],
+      "amount": 2500,
+      "odds": 4.3,
+      "timestamp": "2026-06-08T13:28:45.042Z"
+    },
+    {
+      "id": "mq58yfm8rw3v",
+      "name": "Demo_吉田",
+      "type": "trifecta",
+      "picks": [
+        "AUS",
+        "NED",
+        "GHA"
+      ],
+      "amount": 2400,
+      "odds": 8785.5,
+      "timestamp": "2026-06-08T13:28:45.200Z"
+    },
+    {
+      "id": "mq58yfqok6is",
+      "name": "Demo_吉田",
+      "type": "win",
+      "picks": [
+        "TUN"
+      ],
+      "amount": 100,
+      "odds": 300,
+      "timestamp": "2026-06-08T13:28:45.360Z"
+    },
+    {
+      "id": "mq58yfv2650y",
+      "name": "Demo_山田",
+      "type": "win",
+      "picks": [
+        "CIV"
+      ],
+      "amount": 3400,
+      "odds": 150,
+      "timestamp": "2026-06-08T13:28:45.518Z"
+    },
+    {
+      "id": "mq58yg0l19cb",
+      "name": "Demo_山田",
+      "type": "trio",
+      "picks": [
+        "ESP",
+        "SCO",
+        "SEN"
+      ],
+      "amount": 600,
+      "odds": 378.5,
+      "timestamp": "2026-06-08T13:28:45.717Z"
+    },
+    {
+      "id": "mq58yg5xjgzx",
+      "name": "Demo_山田",
+      "type": "place",
+      "picks": [
+        "ALG"
+      ],
+      "amount": 300,
+      "odds": 87.5,
+      "timestamp": "2026-06-08T13:28:45.909Z"
+    },
+    {
+      "id": "mq58ygbx2kzc",
+      "name": "Demo_山田",
+      "type": "trio",
+      "picks": [
+        "ENG",
+        "GHA",
+        "PAR"
+      ],
+      "amount": 700,
+      "odds": 589.1,
+      "timestamp": "2026-06-08T13:28:46.125Z"
+    },
+    {
+      "id": "mq58yghdagpm",
+      "name": "Demo_佐々木",
+      "type": "trifecta",
+      "picks": [
+        "USA",
+        "FRA",
+        "HAI"
+      ],
+      "amount": 3700,
+      "odds": 1875,
+      "timestamp": "2026-06-08T13:28:46.321Z"
+    },
+    {
+      "id": "mq58ygn62fgt",
+      "name": "Demo_佐々木",
+      "type": "trio",
+      "picks": [
+        "BIH",
+        "SUI",
+        "SWE"
+      ],
+      "amount": 1200,
+      "odds": 8552.8,
+      "timestamp": "2026-06-08T13:28:46.530Z"
+    },
+    {
+      "id": "mq58ygswonwp",
+      "name": "Demo_佐々木",
+      "type": "place",
+      "picks": [
+        "TUN"
+      ],
+      "amount": 100,
+      "odds": 105,
+      "timestamp": "2026-06-08T13:28:46.736Z"
+    },
+    {
+      "id": "mq58yh0gvgfh",
+      "name": "Demo_山口",
+      "type": "win",
+      "picks": [
+        "PAN"
+      ],
+      "amount": 1500,
+      "odds": 400,
+      "timestamp": "2026-06-08T13:28:47.008Z"
+    },
+    {
+      "id": "mq58yh43jd4d",
+      "name": "Demo_山口",
+      "type": "place",
+      "picks": [
+        "CIV"
+      ],
+      "amount": 3500,
+      "odds": 52.5,
+      "timestamp": "2026-06-08T13:28:47.139Z"
+    },
+    {
+      "id": "mq58yh9w8p21",
+      "name": "Demo_松本",
+      "type": "trio",
+      "picks": [
+        "CIV",
+        "PAR",
+        "SCO"
+      ],
+      "amount": 2500,
+      "odds": 11548.4,
+      "timestamp": "2026-06-08T13:28:47.348Z"
+    },
+    {
+      "id": "mq58yhdj4cu6",
+      "name": "Demo_松本",
+      "type": "win",
+      "picks": [
+        "FRA"
+      ],
+      "amount": 1700,
+      "odds": 6.56,
+      "timestamp": "2026-06-08T13:28:47.479Z"
+    },
+    {
+      "id": "mq58yhhhmtkz",
+      "name": "Demo_松本",
+      "type": "place",
+      "picks": [
+        "CRO"
+      ],
+      "amount": 400,
+      "odds": 25,
+      "timestamp": "2026-06-08T13:28:47.621Z"
+    },
+    {
+      "id": "mq58yhllkl4o",
+      "name": "Demo_松本",
+      "type": "place",
+      "picks": [
+        "ECU"
+      ],
+      "amount": 400,
+      "odds": 26.8,
+      "timestamp": "2026-06-08T13:28:47.769Z"
+    },
+    {
+      "id": "mq58yhr1qnv7",
+      "name": "Demo_井上",
+      "type": "trifecta",
+      "picks": [
+        "COL",
+        "ESP",
+        "PAN"
+      ],
+      "amount": 1000,
+      "odds": 996,
+      "timestamp": "2026-06-08T13:28:47.965Z"
+    },
+    {
+      "id": "mq58yhwszf6f",
+      "name": "Demo_井上",
+      "type": "trifecta",
+      "picks": [
+        "ESP",
+        "GHA",
+        "CZE"
+      ],
+      "amount": 1200,
+      "odds": 2391,
+      "timestamp": "2026-06-08T13:28:48.172Z"
+    },
+    {
+      "id": "mq58yi2e028d",
+      "name": "Demo_井上",
+      "type": "win",
+      "picks": [
+        "SWE"
+      ],
+      "amount": 2800,
+      "odds": 200,
+      "timestamp": "2026-06-08T13:28:48.374Z"
+    },
+    {
+      "id": "mq58yi7xaho6",
+      "name": "Demo_木村",
+      "type": "win",
+      "picks": [
+        "IRQ"
+      ],
+      "amount": 1900,
+      "odds": 500,
+      "timestamp": "2026-06-08T13:28:48.573Z"
+    },
+    {
+      "id": "mq58yib6133a",
+      "name": "Demo_木村",
+      "type": "place",
+      "picks": [
+        "BRA"
+      ],
+      "amount": 3100,
+      "odds": 3.2,
+      "timestamp": "2026-06-08T13:28:48.690Z"
+    },
+    {
+      "id": "mq58yih0iwx5",
+      "name": "Demo_林",
+      "type": "win",
+      "picks": [
+        "MAR"
+      ],
+      "amount": 200,
+      "odds": 53.55,
+      "timestamp": "2026-06-08T13:28:48.900Z"
+    },
+    {
+      "id": "mq58yikbsfvh",
+      "name": "Demo_林",
+      "type": "place",
+      "picks": [
+        "BEL"
+      ],
+      "amount": 2700,
+      "odds": 8.7,
+      "timestamp": "2026-06-08T13:28:49.019Z"
+    },
+    {
+      "id": "mq58yio8oagh",
+      "name": "Demo_林",
+      "type": "win",
+      "picks": [
+        "SCO"
+      ],
+      "amount": 2100,
+      "odds": 250,
+      "timestamp": "2026-06-08T13:28:49.160Z"
+    },
+    {
+      "id": "mq58yirsaf1e",
+      "name": "Demo_斎藤",
+      "type": "win",
+      "picks": [
+        "MEX"
+      ],
+      "amount": 2900,
+      "odds": 58.05,
+      "timestamp": "2026-06-08T13:28:49.288Z"
+    },
+    {
+      "id": "mq58yiuvi6sn",
+      "name": "Demo_斎藤",
+      "type": "trifecta",
+      "picks": [
+        "ECU",
+        "BEL",
+        "ARG"
+      ],
+      "amount": 2100,
+      "odds": 724,
+      "timestamp": "2026-06-08T13:28:49.399Z"
+    },
+    {
+      "id": "mq58yj2dpw9v",
+      "name": "Demo_清水",
+      "type": "win",
+      "picks": [
+        "BIH"
+      ],
+      "amount": 1100,
+      "odds": 250,
+      "timestamp": "2026-06-08T13:28:49.669Z"
+    },
+    {
+      "id": "mq58yj639oq7",
+      "name": "Demo_清水",
+      "type": "trifecta",
+      "picks": [
+        "TUR",
+        "NED",
+        "IRN"
+      ],
+      "amount": 3900,
+      "odds": 7907,
+      "timestamp": "2026-06-08T13:28:49.803Z"
+    }
+  ],
+  "odds": {},
+  "settled": false,
+  "votingClosed": false
+}

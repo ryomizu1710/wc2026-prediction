@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIFA World Cup 2026 Prediction</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>⚽ FIFA World Cup 2026 Prediction</h1>
+      <p class="subtitle">ブックメーカー方式 ─ 持ちコイン <span id="headerBalance">5,000</span>枚</p>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="vote">🎫 投票</button>
+    <button class="tab" data-tab="odds">📊 オッズ</button>
+    <button class="tab" data-tab="history">📋 投票一覧</button>
+    <button class="tab" data-tab="ranking">🏆 ランキング</button>
+    <button class="tab" data-tab="admin">⚙️ 管理</button>
+  </nav>
+
+  <!-- ===== 投票パネル ===== -->
+  <section id="vote" class="panel active">
+    <div class="card vote-card">
+      <div class="pool-status-inline">
+        <div class="pool-grid">
+          <div class="pool-item">
+            <div class="pool-label">参加者</div>
+            <div class="pool-value"><span id="poolParticipants">0</span>人</div>
+          </div>
+          <div class="pool-item">
+            <div class="pool-label">賞金プール上限</div>
+            <div class="pool-value">🪙<span id="poolTotal">0</span></div>
+          </div>
+          <div class="pool-item">
+            <div class="pool-label">現在の投票総額</div>
+            <div class="pool-value">🪙<span id="poolBet">0</span></div>
+          </div>
+          <div class="pool-item" id="poolAdjustBox">
+            <div class="pool-label">払戻調整</div>
+            <div class="pool-value" id="poolAdjust">調整なし</div>
+          </div>
+        </div>
+        <p class="pool-note">
+          💡 払戻総額が <strong>参加者数 × 5,000コイン</strong> を超える場合、全当選者の払戻が同じ割合で縮小されます。
+        </p>
+      </div>
+      <div class="vote-layout">
+        <!-- ── Left: 入力フォーム ── -->
+        <div class="vote-left">
+          <div class="form-row">
+            <div class="form-group flex-2">
+              <label>あなたの名前</label>
+              <input type="text" id="voterName" placeholder="名前を入力" />
+            </div>
+            <div class="form-group flex-1">
+              <label>残高</label>
+              <div id="balanceDisplay" class="balance-box">
+                <span class="coin-icon">🪙</span>
+                <span id="balanceValue">5,000</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>賭け式</label>
+            <div class="bet-type-cards">
+              <button class="bet-type-card selected" data-type="win">
+                <span class="bet-type-name">単勝</span>
+                <span class="bet-type-desc">優勝国</span>
+              </button>
+              <button class="bet-type-card" data-type="place">
+                <span class="bet-type-name">複勝</span>
+                <span class="bet-type-desc">3位以内</span>
+              </button>
+              <button class="bet-type-card" data-type="trio">
+                <span class="bet-type-name">三連複</span>
+                <span class="bet-type-desc">上位3国順不同</span>
+              </button>
+              <button class="bet-type-card" data-type="trifecta">
+                <span class="bet-type-name">三連単</span>
+                <span class="bet-type-desc">1〜3位順通り</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label id="pickLabel">優勝国を選択</label>
+            <div id="pickSlots" class="pick-slots"></div>
+          </div>
+
+          <div class="form-group" id="betAmountSection" style="display:none">
+            <label>賭けるコイン数（100コイン単位）</label>
+            <div class="amount-control">
+              <button class="amount-btn" data-delta="-500">-500</button>
+              <button class="amount-btn" data-delta="-100">-100</button>
+              <input type="number" id="betAmount" value="500" min="100" step="100" />
+              <button class="amount-btn" data-delta="+100">+100</button>
+              <button class="amount-btn" data-delta="+500">+500</button>
+            </div>
+            <div class="payout-preview">
+              的中時: <span id="payoutPreview">0</span> コイン獲得
+              <span class="payout-odds">（<span id="previewOdds">0</span>倍）</span>
+            </div>
+          </div>
+
+          <button id="submitBet" class="btn primary">投票する</button>
+          <div id="voteMessage" class="message"></div>
+
+          <div class="fifa-logo-wrap">
+            <img src="/fifa-logo.png" alt="FIFA World Cup 26" class="fifa-logo" />
+          </div>
+        </div>
+
+        <!-- ── Right: チーム選択 ── -->
+        <div class="vote-right">
+          <div class="vote-right-label">出場48カ国（クリックで選択）</div>
+          <div id="teamGrid" class="team-grid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== オッズ一覧パネル ===== -->
+  <section id="odds" class="panel">
+    <div class="card">
+      <h2>オッズ一覧</h2>
+      <p class="note">管理者が設定した固定オッズです。複勝・三連複・三連単は単勝オッズから自動算出されます。</p>
+      <div class="form-group" style="max-width:300px">
+        <select id="oddsSort">
+          <option value="odds-asc">単勝オッズ順（低→高）</option>
+          <option value="odds-desc">単勝オッズ順（高→低）</option>
+          <option value="group">グループ順</option>
+        </select>
+      </div>
+      <div id="oddsTable"></div>
+    </div>
+  </section>
+
+  <!-- ===== 投票一覧パネル ===== -->
+  <section id="history" class="panel">
+    <div class="card">
+      <h2>投票一覧</h2>
+      <div class="form-group" style="max-width:300px">
+        <select id="historyFilter">
+          <option value="all">全員</option>
+        </select>
+      </div>
+      <div id="betHistory"></div>
+    </div>
+  </section>
+
+  <!-- ===== ランキングパネル ===== -->
+  <section id="ranking" class="panel">
+    <div class="card">
+      <h2>ランキング</h2>
+      <div id="rankingContent"></div>
+    </div>
+  </section>
+
+  <!-- ===== 管理パネル ===== -->
+  <section id="admin" class="panel">
+    <div class="card">
+      <h2>管理者メニュー</h2>
+      <div class="form-group">
+        <label>管理者キー</label>
+        <input type="password" id="adminKey" placeholder="管理者キーを入力" />
+      </div>
+
+      <div class="admin-section">
+        <h3>📊 オッズ設定</h3>
+        <p class="note">各チームの単勝オッズを設定します。複勝等は自動算出されます。</p>
+        <div id="oddsEditor"></div>
+        <button id="saveOddsBtn" class="btn primary" style="margin-top:1rem">オッズを保存</button>
+      </div>
+
+      <hr>
+
+      <div class="admin-section">
+        <h3>🔒 投票締切</h3>
+        <p class="note">
+          投票締切後は新規投票・取消ができなくなります（取消可能）。
+          結果確定とは別の操作です。
+        </p>
+        <div id="closeStateBox" class="state-box">現在の状態: <span id="closeState">投票受付中</span></div>
+        <button id="closeBtn" class="btn primary" style="margin-top:0.6rem">投票を締め切る</button>
+        <button id="reopenBtn" class="btn secondary" style="display:none;margin-top:0.6rem">投票を再開する</button>
+      </div>
+
+      <hr>
+
+      <div class="admin-section">
+        <h3>🏆 結果入力（確定）</h3>
+        <p class="note">
+          結果を確定すると、払戻が計算され「ランキング」タブに表示されます。
+          投票締切も自動的に発動します。<strong style="color:#ff9966">取消は可能ですが</strong>慎重に。
+        </p>
+        <div class="form-group">
+          <label>🥇 優勝（1位）</label>
+          <select id="result1"></select>
+        </div>
+        <div class="form-group">
+          <label>🥈 準優勝（2位）</label>
+          <select id="result2"></select>
+        </div>
+        <div class="form-group">
+          <label>🥉 3位</label>
+          <select id="result3"></select>
+        </div>
+        <div id="settleStateBox" class="state-box" style="margin-bottom:0.6rem">現在の状態: <span id="settleState">未確定</span></div>
+        <button id="settleBtn" class="btn primary">結果を確定して払戻計算</button>
+        <button id="unsettleBtn" class="btn secondary" style="display:none;margin-top:0.6rem">結果確定を取り消す</button>
+      </div>
+
+      <hr>
+
+      <div class="admin-section">
+        <h3>💾 データバックアップ</h3>
+        <p class="note">
+          Renderの無料プランは再起動時にデータが消える可能性があります。
+          こまめに「ダウンロード」してバックアップを取り、万一消えたら「復元」してください。
+        </p>
+        <button id="exportBtn" class="btn secondary" style="margin-bottom:0.5rem">📥 投票データをダウンロード</button>
+        <div class="form-group">
+          <label>📤 バックアップから復元</label>
+          <input type="file" id="importFile" accept="application/json" />
+        </div>
+        <button id="importBtn" class="btn secondary">バックアップを読み込んで上書き</button>
+      </div>
+
+      <hr>
+
+      <div class="admin-section">
+        <h3>🎲 デモデータ</h3>
+        <p class="note">
+          20人がランダムに投票するデモを生成します。動作確認・画面プレビュー用。
+          名前は「Demo_◯◯」で始まります。
+        </p>
+        <button id="demoBtn" class="btn secondary" style="margin-bottom:0.5rem">デモ投票を生成（20人）</button>
+        <button id="demoClearBtn" class="btn secondary">デモ投票だけ削除</button>
+      </div>
+
+      <hr>
+
+      <div class="admin-section">
+        <h3>⚠️ リセット</h3>
+        <button id="resetBtn" class="btn danger">全データリセット</button>
+      </div>
+      <div id="adminMessage" class="message"></div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

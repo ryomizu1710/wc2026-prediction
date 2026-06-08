@@ -1,0 +1,493 @@
+/* ─── Fixture Font (静的OTF版、重み別) ─── */
+@font-face {
+  font-family: 'Fixture';
+  src: url('/fonts/Fixture%20Thin.otf') format('opentype');
+  font-weight: 100; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fixture';
+  src: url('/fonts/Fixture%20ExtraLight.otf') format('opentype');
+  font-weight: 200; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fixture';
+  src: url('/fonts/Fixture%20Light.otf') format('opentype');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fixture';
+  src: url('/fonts/Fixture%20Regular.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fixture';
+  src: url('/fonts/Fixture%20Medium.otf') format('opentype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fixture';
+  src: url('/fonts/Fixture%20SemiBold.otf') format('opentype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fixture';
+  src: url('/fonts/Fixture%20Bold.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fixture';
+  src: url('/fonts/Fixture%20ExtraBold.otf') format('opentype');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fixture';
+  src: url('/fonts/Fixture%20Black.otf') format('opentype');
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Fixture';
+  src: url('/fonts/Fixture%20Italic%20Regular.otf') format('opentype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Fixture';
+  src: url('/fonts/Fixture%20Italic%20Bold.otf') format('opentype');
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  font-family: 'Fixture', 'Segoe UI', 'Hiragino Sans', 'Meiryo', sans-serif;
+  background: #0a0e27;
+  color: #e0e0e0;
+  height: 100vh;
+  overflow: hidden;
+}
+body { display: flex; flex-direction: column; }
+
+/* ─── Header (slim) ─── */
+header {
+  background: linear-gradient(135deg, #1a1f4e 0%, #2d1b69 50%, #1a1f4e 100%);
+  padding: 0.4rem 1rem;
+  text-align: center;
+  border-bottom: 2px solid #ffd700;
+  flex-shrink: 0;
+}
+header h1 { font-size: 1rem; color: #ffd700; display: inline-block; margin-right: 0.6rem; }
+.subtitle { color: #aab; font-size: 0.75rem; display: inline-block; }
+.subtitle span { color: #ffd700; font-weight: 700; }
+
+/* ─── Tabs ─── */
+.tabs { display: flex; background: #12163a; border-bottom: 1px solid #2a2f5a; overflow-x: auto; flex-shrink: 0; }
+.tab {
+  flex: 1; padding: 0.4rem 0.3rem; background: none; border: none;
+  color: #889; cursor: pointer; font-size: 0.78rem; font-weight: 600;
+  transition: all 0.2s; white-space: nowrap; min-width: 70px;
+}
+.tab:hover { color: #ccd; background: #1a1f4e; }
+.tab.active { color: #ffd700; border-bottom: 2px solid #ffd700; background: #1a1f4e; }
+
+/* ─── Panels ─── */
+.panel {
+  display: none;
+  padding: 0.5rem 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+  min-height: 0;
+}
+.panel.active { display: flex; flex-direction: column; }
+#odds.active, #history.active, #ranking.active, #admin.active {
+  max-width: 900px; overflow-y: auto; display: block;
+}
+
+.card { padding: 0.6rem 0.8rem; margin-bottom: 0.4rem; }
+h2 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+.form-group { margin-bottom: 0.4rem; }
+.form-group label { font-size: 0.75rem; margin-bottom: 0.2rem; }
+input[type="text"], input[type="password"], input[type="number"], select {
+  padding: 0.4rem 0.6rem; font-size: 0.88rem;
+}
+
+.card {
+  background: #151a3e; border-radius: 12px; padding: 1.5rem;
+  border: 1px solid #2a2f5a;
+}
+
+h2 { color: #ffd700; margin-bottom: 1rem; font-size: 1.2rem; }
+h3 { color: #ccd; margin: 1rem 0 0.5rem; font-size: 1rem; }
+
+/* ─── Forms ─── */
+.form-group { margin-bottom: 1rem; }
+.form-group label {
+  display: block; margin-bottom: 0.4rem; color: #aab;
+  font-size: 0.85rem; font-weight: 600;
+}
+.form-row { display: flex; gap: 1rem; align-items: flex-end; }
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
+
+input[type="text"], input[type="password"], input[type="number"], select {
+  width: 100%; padding: 0.6rem 0.8rem; background: #0d1130;
+  border: 1px solid #2a2f5a; border-radius: 8px; color: #e0e0e0; font-size: 0.95rem;
+}
+input:focus, select:focus { outline: none; border-color: #ffd700; }
+
+/* ─── Balance ─── */
+.balance-box {
+  background: #0d1130; border: 2px solid #ffd700; border-radius: 6px;
+  padding: 0.35rem 0.5rem; text-align: center; font-size: 0.95rem;
+  font-weight: 700; color: #ffd700;
+}
+.coin-icon { margin-right: 0.2rem; }
+
+/* ─── Bet Type Cards (compact, 2x2 in left column) ─── */
+.bet-type-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.3rem; }
+.bet-type-card {
+  background: #0d1130; border: 2px solid #2a2f5a; border-radius: 7px;
+  padding: 0.3rem 0.25rem; cursor: pointer; text-align: center; transition: all 0.2s;
+}
+.bet-type-card:hover { border-color: #556; }
+.bet-type-card.selected { border-color: #ffd700; background: #1a1f4e; }
+.bet-type-name { display: block; font-size: 0.82rem; font-weight: 700; color: #ffd700; }
+.bet-type-desc { display: block; font-size: 0.62rem; color: #889; margin-top: 0.05rem; }
+
+/* ─── Pick Slots (1列固定縦並び) ─── */
+.pick-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+.pick-slot {
+  background: #0d1130; border: 2px dashed #2a2f5a; border-radius: 6px;
+  padding: 0.3rem 0.6rem; width: 100%; text-align: left;
+  font-size: 0.78rem; color: #667; transition: all 0.2s;
+  display: flex; align-items: center; gap: 0.5rem;
+  box-sizing: border-box;
+}
+.pick-slot .slot-label {
+  font-size: 0.68rem; color: #556;
+  min-width: 80px; flex-shrink: 0; text-align: left;
+}
+.pick-slot .slot-team {
+  flex: 1; font-weight: 700; text-align: left;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pick-slot .slot-odds { font-size: 0.7rem; color: #ffaa00; flex-shrink: 0; }
+.pick-slot.filled .remove-pick {
+  margin-left: 0; cursor: pointer; color: #f66; font-weight: 700; flex-shrink: 0;
+}
+.pick-slot.filled { border-style: solid; border-color: #ffd700; color: #ffd700; background: #1a1f4e; }
+
+/* ─── Vote Card (fill remaining height) ─── */
+.vote-card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Vote 2-column Layout ─── */
+.vote-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) 1fr;
+  gap: 1rem;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+}
+.vote-left {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.vote-right {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.vote-right-label {
+  font-size: 0.75rem; color: #aab; font-weight: 600;
+  margin-bottom: 0.4rem; padding-left: 0.2rem;
+}
+
+/* ─── Team Grid (2 cols × 6 rows of groups, fill height) ─── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0.4rem;
+  flex: 1;
+  min-height: 0;
+}
+.group-section {
+  background: #0d1130; border-radius: 8px;
+  padding: 0.4rem 0.5rem; border-left: 3px solid #ffd700;
+  display: flex; flex-direction: column;
+  min-height: 0;
+}
+.group-header {
+  display: flex; align-items: center; margin-bottom: 0.3rem;
+}
+.group-badge {
+  display: inline-block; background: #ffd700; color: #1a1f4e;
+  padding: 0.1rem 0.55rem; border-radius: 4px; font-size: 0.7rem;
+  font-weight: 700; letter-spacing: 0.05em;
+}
+.group-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3rem;
+  flex: 1;
+  min-height: 0;
+}
+.team-btn {
+  position: relative;
+  background: #151a3e; border: 1px solid #2a2f5a; border-radius: 6px;
+  padding: 0.3rem 0.15rem; color: #ccd; cursor: pointer; font-size: 0.75rem;
+  transition: all 0.15s; text-align: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.2rem;
+  min-height: 0;
+}
+.team-btn .team-name { font-size: 0.74rem; }
+.team-btn .team-odds { font-size: 0.72rem; }
+.flag-md { width: 32px; height: 22px; }
+.team-btn:hover { background: #1a1f4e; border-color: #556; }
+.team-btn.selected { background: #2d1b69; border-color: #ffd700; color: #ffd700; box-shadow: 0 0 0 2px rgba(255,215,0,0.3); }
+.team-btn.disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* ─── Flag images ─── */
+.flag {
+  display: inline-block; border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  object-fit: cover;
+  vertical-align: middle;
+}
+.flag-sm { width: 18px; height: 13px; margin-right: 0.3rem; }
+.flag-md { width: 28px; height: 19px; }
+.flag-lg { width: 64px; height: 42px; }
+
+.team-name { font-size: 0.7rem; font-weight: 600; line-height: 1.1; word-break: break-all; }
+.team-btn .team-odds { font-size: 0.65rem; color: #ffaa00; font-weight: 700; }
+.order-badge {
+  position: absolute; top: -5px; left: -5px;
+  background: #ffd700; color: #1a1f4e; border-radius: 50%;
+  width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 700; box-shadow: 0 2px 6px rgba(0,0,0,0.4); z-index: 2;
+}
+.td-team { display: flex; align-items: center; }
+
+/* ─── Amount Control ─── */
+.amount-control {
+  display: flex; align-items: center; gap: 0.3rem;
+}
+.amount-control input {
+  width: 100px; text-align: center; font-size: 1.1rem; font-weight: 700;
+}
+.amount-btn {
+  background: #2a2f5a; border: none; color: #ccd; padding: 0.5rem 0.7rem;
+  border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600;
+  transition: background 0.15s;
+}
+.amount-btn:hover { background: #3a3f6a; }
+.payout-preview {
+  margin-top: 0.6rem; padding: 0.6rem; background: #0d1130; border-radius: 8px;
+  border: 1px solid #2a2f5a; font-size: 0.9rem; color: #ccd;
+}
+.payout-preview span { color: #ffd700; font-weight: 700; }
+.payout-odds { font-size: 0.8rem; color: #889; }
+
+/* ─── Buttons ─── */
+.btn {
+  padding: 0.55rem 1.2rem; border: none; border-radius: 7px;
+  font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s; width: 100%;
+}
+.btn.primary { background: linear-gradient(135deg, #ffd700, #ffaa00); color: #1a1f4e; }
+.btn.primary:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(255,215,0,0.3); }
+.btn.danger { background: #d32; color: #fff; }
+.btn.danger:hover { background: #e43; }
+.btn.secondary { background: #2a2f5a; color: #ccd; border: 1px solid #3a3f6a; }
+.btn.secondary:hover { background: #3a3f6a; }
+
+.state-box {
+  background: #0d1130; border: 1px solid #2a2f5a; border-radius: 8px;
+  padding: 0.6rem 0.8rem; font-size: 0.85rem; color: #aab;
+}
+.state-box.warning { border-color: #ff9966; background: rgba(255,153,102,0.1); color: #ffcc99; }
+.state-box span { color: #fff; font-weight: 700; margin-left: 0.4rem; }
+
+/* ─── Messages ─── */
+.message { margin-top: 0.8rem; padding: 0.6rem; border-radius: 6px; font-size: 0.85rem; display: none; }
+.message.success { display: block; background: #0a3; color: #fff; }
+.message.error { display: block; background: #d32; color: #fff; }
+
+.note { color: #889; font-size: 0.85rem; margin-bottom: 1rem; }
+
+/* ─── Pool Status (full-width, evenly spread) ─── */
+.pool-status-inline {
+  width: 100%;
+  margin-bottom: 3rem;
+}
+.pool-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem;
+}
+.pool-item {
+  background: #0d1130; border-radius: 5px; padding: 0.25rem 0.5rem;
+  text-align: center; border: 1px solid #2a2f5a;
+  display: flex; justify-content: space-between; align-items: center; gap: 0.3rem;
+}
+.pool-item.warning { border-color: #ff9966; background: rgba(255,153,102,0.1); }
+.pool-label { font-size: 0.66rem; color: #889; }
+.pool-value { font-size: 0.85rem; font-weight: 700; color: #ffd700; }
+.pool-item.warning .pool-value { color: #ff9966; }
+.pool-note {
+  margin-top: 0.45rem; font-size: 0.7rem; color: #778; line-height: 1.4;
+}
+.pool-note strong { color: #ffd700; }
+
+/* ─── Adjust Box (settlement) ─── */
+.adjust-box {
+  padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 1rem;
+  font-size: 0.85rem; line-height: 1.6;
+}
+.adjust-box.warning { background: rgba(255,153,102,0.15); border-left: 3px solid #ff9966; color: #ffcc99; }
+.adjust-box.ok { background: rgba(0,170,51,0.1); border-left: 3px solid #0a3; color: #aafac0; }
+.adjust-box strong { color: #fff; }
+
+@media (max-width: 600px) {
+  .pool-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ─── Odds Table ─── */
+.odds-table { width: 100%; border-collapse: collapse; }
+.odds-table th {
+  text-align: left; padding: 0.6rem; border-bottom: 2px solid #2a2f5a;
+  color: #aab; font-size: 0.8rem; cursor: pointer;
+}
+.odds-table td { padding: 0.45rem 0.6rem; border-bottom: 1px solid #1a1f4e; font-size: 0.85rem; }
+.odds-table tr:hover { background: #1a1f4e; }
+.odds-val { font-weight: 700; color: #ffd700; }
+.odds-val.fav { color: #ff6b6b; }
+.odds-val.mid { color: #ffd700; }
+.odds-val.long { color: #69db7c; }
+
+/* ─── Bet History ─── */
+.bet-entry {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.7rem; border-bottom: 1px solid #1a1f4e; font-size: 0.85rem;
+  gap: 0.5rem;
+}
+.bet-entry:last-child { border-bottom: none; }
+.bet-entry .bet-name { font-weight: 700; color: #ffd700; min-width: 60px; }
+.bet-type-badge {
+  background: #2d1b69; padding: 0.15rem 0.5rem; border-radius: 10px;
+  font-size: 0.7rem; color: #ccd; white-space: nowrap;
+}
+.bet-entry .bet-picks { color: #ccd; flex: 1; }
+.bet-coins { color: #ffaa00; font-weight: 700; white-space: nowrap; }
+.bet-odds-badge { color: #889; font-size: 0.8rem; white-space: nowrap; }
+.bet-entry .bet-delete {
+  background: none; border: 1px solid #d32; color: #d32;
+  padding: 0.2rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 0.7rem;
+}
+.bet-entry .bet-delete:hover { background: #d32; color: #fff; }
+.bet-entry.my-bet { background: rgba(255,215,0,0.06); border-left: 3px solid #ffd700; padding-left: 0.5rem; }
+.mine-tag {
+  display: inline-block; background: #ffd700; color: #1a1f4e;
+  font-size: 0.65rem; font-weight: 700; padding: 0.05rem 0.4rem;
+  border-radius: 8px; margin-left: 0.3rem; vertical-align: middle;
+}
+
+/* ─── Ranking ─── */
+.ranking-table { width: 100%; border-collapse: collapse; }
+.ranking-table th {
+  text-align: left; padding: 0.6rem; border-bottom: 2px solid #2a2f5a;
+  color: #aab; font-size: 0.8rem;
+}
+.ranking-table td { padding: 0.5rem 0.6rem; border-bottom: 1px solid #1a1f4e; font-size: 0.9rem; }
+.ranking-table tr:nth-child(1) td { color: #ffd700; font-weight: 700; }
+.ranking-table tr:nth-child(2) td { color: #c0c0c0; font-weight: 600; }
+.ranking-table tr:nth-child(3) td { color: #cd7f32; font-weight: 600; }
+.rank-medal { font-size: 1.2rem; }
+.rank-coins { font-weight: 700; color: #ffd700; font-size: 1rem; }
+.rank-profit.positive { color: #0a3; }
+.rank-profit.negative { color: #d32; }
+
+/* ─── Result Badges ─── */
+.result-badges { text-align: center; margin-bottom: 1.5rem; }
+.result-badge {
+  display: inline-block; padding: 0.4rem 1rem; border-radius: 8px;
+  font-weight: 700; margin: 0.3rem; font-size: 1rem;
+}
+.result-badge.gold { background: #ffd700; color: #1a1f4e; }
+.result-badge.silver { background: #c0c0c0; color: #1a1f4e; }
+.result-badge.bronze { background: #cd7f32; color: #fff; }
+
+/* ─── Admin ─── */
+.admin-section { margin-bottom: 1rem; }
+.odds-editor-group {
+  margin-bottom: 0.8rem; background: #0d1130; padding: 0.5rem 0.6rem;
+  border-radius: 8px; border-left: 3px solid #ffd700;
+}
+.odds-editor-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem; margin-top: 0.4rem;
+}
+.odds-editor-item {
+  display: flex; align-items: center; gap: 0.4rem;
+  background: #151a3e; padding: 0.4rem 0.6rem; border-radius: 6px;
+}
+.odds-editor-item label { color: #ccd; font-size: 0.8rem; flex: 1; margin: 0; }
+.odds-editor-item input {
+  width: 70px; padding: 0.3rem; text-align: center; font-size: 0.85rem; font-weight: 700;
+}
+@media (min-width: 700px) {
+  .odds-editor-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.payout-entry {
+  padding: 0.6rem; border-bottom: 1px solid #1a1f4e; font-size: 0.85rem;
+}
+.payout-entry.won { background: rgba(0,170,51,0.1); border-left: 3px solid #0a3; }
+.payout-entry.lost { opacity: 0.5; }
+.payout-amount { font-weight: 700; color: #ffd700; font-size: 1.1rem; }
+
+.empty-state { text-align: center; padding: 2rem; color: #556; }
+hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
+
+/* ─── FIFA Logo (bottom-aligned with team grid) ─── */
+.fifa-logo-wrap {
+  margin-top: auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: transparent;
+  min-height: 0;
+  overflow: hidden;
+}
+.fifa-logo {
+  max-width: 340px;
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .vote-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .team-grid { grid-template-columns: 1fr; grid-template-rows: none; }
+  .group-row { grid-template-columns: repeat(4, 1fr); }
+  .form-row { flex-direction: column; gap: 0.5rem; }
+  .amount-control { flex-wrap: wrap; justify-content: center; }
+  header h1 { font-size: 1.1rem; }
+  .odds-editor-grid { grid-template-columns: 1fr; }
+  .pool-grid { grid-template-columns: repeat(2, 1fr); }
+}

@@ -685,7 +685,31 @@ hr { border: none; border-top: 1px solid #2a2f5a; margin: 1.5rem 0; }
   max-width: 130px;            /* 200px → 130px に縮小 */
   max-height: 70px;
 }
-/* Windowsは従来通り（ロゴ大きいまま）→ ここでは何もしない */
+
+/* Mac専用：チームカードを小さめに（余裕を持たせる） */
+.is-mac .team-btn {
+  padding: 0.45rem 0.3rem 0.4rem;
+  gap: 0.25rem;
+}
+.is-mac .team-btn .flag-md {
+  width: 22px;
+  height: 15px;
+}
+.is-mac .team-btn .team-name {
+  font-size: 0.6rem;
+  line-height: 1.05;
+}
+.is-mac .team-btn .team-name.long-name {
+  font-size: 0.5rem;
+}
+.is-mac .team-btn .team-name.very-long-name {
+  font-size: 0.45rem;
+}
+.is-mac .team-btn .team-odds {
+  font-size: 0.58rem;
+}
+
+/* Windowsは従来通り（変更なし） */
 
 @media (max-width: 900px) {
   .vote-layout { grid-template-columns: 1fr; }
